@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
 import { FriendsModule } from './friends/friends.module';
 import { UsersModule } from './users/users.module';
 import { ConfigModule } from '@nestjs/config';
-import { oauth2Config } from './config/oauth2.config';
+import { authConfig } from './config/auth.config';
+import { commonConfig } from './config/common.config';
 
 @Module({
   imports: [
@@ -11,10 +11,10 @@ import { oauth2Config } from './config/oauth2.config';
     UsersModule,
     ConfigModule.forRoot({
       envFilePath: ['.env', '.env.secret'],
-      load: [oauth2Config],
+      load: [commonConfig, authConfig],
     }),
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [],
 })
 export class AppModule {
