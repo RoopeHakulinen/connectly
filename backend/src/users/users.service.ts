@@ -25,12 +25,29 @@ export class UsersService {
     });
   }
 
-  create(email: string, name: string) {
-    return this.prisma.user.create({
+  async create(email: string, name: string) {
+    const user = await this.prisma.user.create({
       data: {
         email,
         name,
       },
+    });
+
+    return this.prisma.tier.createMany({
+      data: [
+        {
+          userId: user.id,
+          priority: 1,
+        },
+        {
+          userId: user.id,
+          priority: 2,
+        },
+        {
+          userId: user.id,
+          priority: 3,
+        },
+      ],
     });
   }
 }

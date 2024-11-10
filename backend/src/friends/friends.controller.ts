@@ -18,8 +18,8 @@ export class FriendsController {
   constructor(private readonly friendsService: FriendsService) {}
 
   @Post()
-  create(@Body() createFriendDto: CreateFriendDto) {
-    return this.friendsService.create(createFriendDto);
+  create(@CurrentUser() user: User, @Body() createFriendDto: CreateFriendDto) {
+    return this.friendsService.create(createFriendDto, user.id);
   }
 
   @Get()

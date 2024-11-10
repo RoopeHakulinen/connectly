@@ -7,8 +7,23 @@ import { PrismaService } from '../../prisma.service';
 export class FriendsService {
   constructor(private prisma: PrismaService) {}
 
-  create(createFriendDto: CreateFriendDto) {
-    return 'This action adds a new friend';
+  create(createFriendDto: CreateFriendDto, userId: number) {
+    return this.prisma.friend.create({
+      data: {
+        name: createFriendDto.name,
+        notes: createFriendDto.notes,
+        tier: {
+          connect: {
+            id: createFriendDto.tierId,
+          },
+        },
+        user: {
+          connect: {
+            id: userId,
+          },
+        },
+      },
+    });
   }
 
   findAll(userId: number) {
@@ -28,7 +43,12 @@ export class FriendsService {
   }
 
   update(id: number, updateFriendDto: UpdateFriendDto) {
-    return `This action updates a #${id} friend`;
+    return this.prisma.friend.update({
+      where: {
+        id,
+      },
+      data: updateFriendDto,
+    });
   }
 
   remove(id: number) {
