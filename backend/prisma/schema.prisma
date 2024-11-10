@@ -38,7 +38,7 @@ model Activity {
   id        Int          @id() @default(autoincrement())
   type      ActivityType
   timestamp DateTime     @updatedAt
-  friend    Friend       @relation(fields: [friendId], references: [id])
+  friend Friend @relation(fields: [friendId], references: [id], onDelete: Cascade)
   friendId  Int
 }
 

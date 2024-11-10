@@ -61,4 +61,4 @@ ALTER TABLE "Tier"
 
 -- AddForeignKey
 ALTER TABLE "Activity"
-    ADD CONSTRAINT "Activity_friendId_fkey" FOREIGN KEY ("friendId") REFERENCES "Friend" ("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+    ADD CONSTRAINT "Activity_friendId_fkey" FOREIGN KEY ("friendId") REFERENCES "Friend" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
