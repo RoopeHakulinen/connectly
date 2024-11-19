@@ -9,7 +9,7 @@ export const authGuard: CanActivateFn = (route, state) => {
     map((me) => !!me),
     catchError(() => {
       window.location.replace(
-        `/api/auth/refresh-login?redirect_url=${encodeURIComponent(state.url)}`,
+        `/api/auth/redirect?redirect_url=${encodeURIComponent(state.url)}`,
       );
       return of(false);
     }),
