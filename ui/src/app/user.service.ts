@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,9 +10,9 @@ interface User {
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private http: HttpClient) {}
+  #http: HttpClient = inject(HttpClient);
 
   getMe(): Observable<User> {
-    return this.http.get<User>('/api/users/me');
+    return this.#http.get<User>('/api/users/me');
   }
 }

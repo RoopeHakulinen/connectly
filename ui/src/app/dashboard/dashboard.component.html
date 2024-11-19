@@ -1,1 +1,17 @@
-<p>dashboard works!</p>
+<div class="dashboard-container">
+  <div class="targets-container">
+    @if (targets$ | async; as targetsQuery) {
+      @if (targetsQuery.data; as targets) {
+        @for (target of targets; track $index) {
+          <div class="target">
+            <div class="type">{{ target.type }}</div>
+            <div class="name">{{ target.name }}</div>
+            <div class="tier">{{ target.tier.priority }}</div>
+          </div>
+        }
+      }
+    }
+    <mat-divider></mat-divider>
+    <button mat-flat-button>Create a new target</button>
+  </div>
+</div>

@@ -1,6 +1,9 @@
 -- CreateEnum
 CREATE TYPE "ActivityType" AS ENUM ('CALL', 'MESSAGE', 'OTHER');
 
+-- CreateEnum
+CREATE TYPE "TargetType" AS ENUM ('FRIEND', 'TASK');
+
 -- CreateTable
 CREATE TABLE "User"
 (
@@ -12,15 +15,16 @@ CREATE TABLE "User"
 );
 
 -- CreateTable
-CREATE TABLE "Friend"
+CREATE TABLE "Target"
 (
-    "id"     SERIAL  NOT NULL,
-    "name"   TEXT    NOT NULL,
-    "notes"  TEXT    NOT NULL,
-    "userId" INTEGER NOT NULL,
-    "tierId" INTEGER NOT NULL,
+    "id"     SERIAL       NOT NULL,
+    "name"   TEXT         NOT NULL,
+    "notes"  TEXT         NOT NULL,
+    "type"   "TargetType" NOT NULL,
+    "userId" INTEGER      NOT NULL,
+    "tierId" INTEGER      NOT NULL,
 
-    CONSTRAINT "Friend_pkey" PRIMARY KEY ("id")
+    CONSTRAINT "Target_pkey" PRIMARY KEY ("id")
 );
 
 -- CreateTable
@@ -39,7 +43,7 @@ CREATE TABLE "Activity"
     "id"        SERIAL         NOT NULL,
     "type"      "ActivityType" NOT NULL,
     "timestamp" TIMESTAMP(3)   NOT NULL,
-    "friendId"  INTEGER        NOT NULL,
+    "targetId"  INTEGER        NOT NULL,
 
     CONSTRAINT "Activity_pkey" PRIMARY KEY ("id")
 );
@@ -48,12 +52,12 @@ CREATE TABLE "Activity"
 CREATE UNIQUE INDEX "User_email_key" ON "User" ("email");
 
 -- AddForeignKey
-ALTER TABLE "Friend"
-    ADD CONSTRAINT "Friend_tierId_fkey" FOREIGN KEY ("tierId") REFERENCES "Tier" ("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Target"
+    ADD CONSTRAINT "Target_tierId_fkey" FOREIGN KEY ("tierId") REFERENCES "Tier" ("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
-ALTER TABLE "Friend"
-    ADD CONSTRAINT "Friend_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+ALTER TABLE "Target"
+    ADD CONSTRAINT "Target_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE "Tier"
@@ -61,4 +65,4 @@ ALTER TABLE "Tier"
 
 -- AddForeignKey
 ALTER TABLE "Activity"
-    ADD CONSTRAINT "Activity_friendId_fkey" FOREIGN KEY ("friendId") REFERENCES "Friend" ("id") ON DELETE CASCADE ON UPDATE CASCADE;
+    ADD CONSTRAINT "Activity_targetId_fkey" FOREIGN KEY ("targetId") REFERENCES "Target" ("id") ON DELETE CASCADE ON UPDATE CASCADE;

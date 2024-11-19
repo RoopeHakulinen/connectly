@@ -1,0 +1,30 @@
+.dashboard-container {
+  display: flex;
+  flex-grow: 1;
+  width: 100%;
+
+  .targets-container {
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+
+    .target {
+      display: flex;
+      column-gap: 20px;
+      align-items: center;
+
+      .type {
+        border-radius: 10px;
+        background-color: darkslategrey;
+        padding: 5px 20px;
+        color: whitesmoke;
+      }
+
+      .name {
+        flex-grow: 1;
+      }
+    }
+  }
+}
