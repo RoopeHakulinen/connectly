@@ -7,11 +7,10 @@ import { MatButton } from '@angular/material/button';
 import { MatDivider } from '@angular/material/divider';
 
 @Component({
-  selector: 'app-dashboard',
-  standalone: true,
-  imports: [AsyncPipe, MatButton, MatDivider],
-  templateUrl: './dashboard.component.html',
-  styleUrl: './dashboard.component.scss',
+    selector: 'app-dashboard',
+    imports: [AsyncPipe, MatButton, MatDivider],
+    templateUrl: './dashboard.component.html',
+    styleUrl: './dashboard.component.scss'
 })
 export class DashboardComponent {
   targets$: Observable<QueryObserverResult<Target[]>> =
