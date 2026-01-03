@@ -2,14 +2,14 @@ services:
   database:
     image: postgres
     ports:
-      - '5432:5432'
+      - '5438:5432'
     environment:
       - POSTGRES_DB=postgres
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=sMgKQ3Wtj9pKZ9wdfh9Ufbd8
       - POSTGRES_HOST_AUTH_METHOD=trust
     volumes:
-      - database-data:/var/lib/postgresql/data
+      - database-data:/var/lib/postgresql
 
 volumes:
   database-data:
