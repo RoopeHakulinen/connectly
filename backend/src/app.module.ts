@@ -28,7 +28,7 @@ import { HealthController } from './health/health.controller';
       load: [commonConfig, authConfig],
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'public'),
+      rootPath: join(process.cwd(), 'dist', 'public'),
       exclude: ['/api/(.*)'],
     }),
   ],
@@ -43,4 +43,4 @@ import { HealthController } from './health/health.controller';
     PrismaService,
   ],
 })
-export class AppModule {}
+export class AppModule { }

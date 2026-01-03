@@ -35,7 +35,7 @@ COPY --from=backend /home/node/backend/package*.json /home/node/
 COPY --from=backend /home/node/backend/node_modules/ /home/node/node_modules/
 COPY --from=backend /home/node/backend/dist/ /home/node/dist/
 COPY --from=backend /home/node/backend/prisma/ /home/node/prisma/
-COPY --from=ui /home/node/ui/dist/ui /home/node/dist/public
+COPY --from=ui /home/node/ui/dist/ui/browser /home/node/dist/public
 COPY --chown=node:node start.sh .
 RUN chmod +x start.sh
 ENV PATH /home/node/node_modules/.bin:$PATH
