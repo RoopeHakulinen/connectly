@@ -33,6 +33,10 @@ resource "aws_ecs_task_definition" "app" {
         {
           "name"  = "DOMAIN",
           "value" = local.environment_domain
+        },
+        {
+          "name"  = "APP_URL",
+          "value" = "https://${local.environment_domain}"
         }
       ],
       secrets = [
