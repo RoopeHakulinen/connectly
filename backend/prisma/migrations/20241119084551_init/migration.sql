@@ -31,7 +31,7 @@ CREATE TABLE "Target"
 CREATE TABLE "Tier"
 (
     "id"       SERIAL  NOT NULL,
-    "priority" INTEGER NOT NULL,
+    "interval" TEXT    NOT NULL,
     "userId"   INTEGER NOT NULL,
 
     CONSTRAINT "Tier_pkey" PRIMARY KEY ("id")
