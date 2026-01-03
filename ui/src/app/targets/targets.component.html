@@ -1,4 +1,56 @@
 <div class="page-container">
-  <h1>Targets</h1>
-  <p>Manage your contacts and tasks here.</p>
+  <div class="header">
+    <div>
+      <h1>Targets</h1>
+      <p class="subtitle">Manage your friends and tasks</p>
+    </div>
+    <button mat-flat-button color="primary" (click)="openDialog()">
+      <mat-icon>add</mat-icon>
+      New Target
+    </button>
+  </div>
+
+  @if (targets$ | async; as query) {
+  @if (query.isLoading) {
+  <div class="loading-container">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+  } @else if (query.data) {
+  @if (query.data.length === 0) {
+  <div class="empty-state">
+    <mat-icon>list</mat-icon>
+    <p>No targets found. Create one to get started!</p>
+  </div>
+  } @else {
+  <div class="cards-grid">
+    @for (target of query.data; track target.id) {
+    <mat-card>
+      <mat-card-header>
+        <mat-icon mat-card-avatar>{{
+          getIconForType(target.type)
+          }}</mat-icon>
+        <mat-card-title>{{ target.name }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ target.tier.interval | recurrence | async }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        @if (target.notes) {
+        <p class="notes">{{ target.notes }}</p>
+        } @else {
+        <p class="notes italic">No notes</p>
+        }
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-button (click)="openDialog(target)">Edit</button>
+        <button mat-button color="warn" (click)="delete(target)">
+          Delete
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    }
+  </div>
+  }
+  }
+  }
 </div>

@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>{{ isEditMode ? "Edit Target" : "New Target" }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="target-form">
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="e.g. John Doe or Monthly Report" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Type</mat-label>
+      <mat-select formControlName="type">
+        @for (type of targetTypes; track type) {
+        <mat-option [value]="type">{{ type }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Frequency</mat-label>
+      <mat-select formControlName="tierId">
+        @if (tiers$ | async; as result) {
+        @if (result.isLoading) {
+        <mat-option disabled>Loading...</mat-option>
+        }
+        @if (result.data) {
+        @for (tier of result.data; track tier.id) {
+        <mat-option [value]="tier.id">{{ tier.interval | recurrence | async }}</mat-option>
+        }
+        }
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Notes</mat-label>
+      <textarea matInput formControlName="notes" rows="4"></textarea>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+    Save
+  </button>
+</mat-dialog-actions>

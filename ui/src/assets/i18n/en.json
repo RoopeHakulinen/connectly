@@ -33,5 +33,23 @@
       "OVERDUE_DAY": "1 day overdue",
       "OVERDUE_DAYS": "{{count}} days overdue"
     }
+  },
+  "RECURRENCE": {
+    "DAILY": {
+      "SIMPLE": "Daily",
+      "COMPLEX": "Every {{count}} days"
+    },
+    "WEEKLY": {
+      "SIMPLE": "Weekly",
+      "COMPLEX": "Every {{count}} weeks"
+    },
+    "MONTHLY": {
+      "SIMPLE": "Monthly",
+      "COMPLEX": "Every {{count}} months"
+    },
+    "YEARLY": {
+      "SIMPLE": "Yearly",
+      "COMPLEX": "Every {{count}} years"
+    }
   }
 }

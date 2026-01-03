@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TargetsModule } from './targets/targets.module';
+import { TiersModule } from './tiers/tiers.module';
 import { UsersModule } from './users/users.module';
 import { DashboardController } from './dashboard/dashboard.controller';
 import { DashboardService } from './dashboard/dashboard.service';
@@ -13,6 +14,7 @@ import { AuthGuard } from './auth/auth.guard';
 @Module({
   imports: [
     TargetsModule,
+    TiersModule,
     UsersModule,
     ConfigModule.forRoot({
       envFilePath: ['.env', '.env.secret'],

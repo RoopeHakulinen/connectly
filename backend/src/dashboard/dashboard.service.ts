@@ -39,7 +39,10 @@ export class DashboardService {
     const targetsWithDeadlines = targets.map((target) => {
       const lastActivity =
         target.activities.length > 0 ? target.activities[0].timestamp : null;
-      const deadline = this.calculateDeadline(lastActivity, target.tier.interval);
+      const deadline = this.calculateDeadline(
+        lastActivity,
+        target.tier.interval,
+      );
       const isOverdue = deadline < now;
 
       return {
@@ -57,7 +60,6 @@ export class DashboardService {
       };
     });
 
-    // Sort by deadline ascending (most urgent first)
     targetsWithDeadlines.sort(
       (a, b) => a.deadline.getTime() - b.deadline.getTime(),
     );
@@ -65,11 +67,7 @@ export class DashboardService {
     return targetsWithDeadlines.slice(0, limit);
   }
 
-  private calculateDeadline(
-    lastActivity: Date | null,
-    interval: string,
-  ): Date {
-    // If no activity, deadline is now (overdue)
+  private calculateDeadline(lastActivity: Date | null, interval: string): Date {
     const baseDate = lastActivity ? new Date(lastActivity) : new Date(0);
 
     const duration = this.parseICalInterval(interval);
@@ -77,8 +75,6 @@ export class DashboardService {
   }
 
   private parseICalInterval(interval: string): number {
-    // Parse iCal RRULE frequency format
-    // Examples: FREQ=DAILY, FREQ=WEEKLY, FREQ=MONTHLY;INTERVAL=2
     const freqMatch = interval.match(/FREQ=(\w+)/i);
     const intervalMatch = interval.match(/INTERVAL=(\d+)/i);
 
@@ -97,7 +93,7 @@ export class DashboardService {
       case 'YEARLY':
         return intervalNum * 365 * MS_PER_DAY;
       default:
-        return 7 * MS_PER_DAY; // Default to weekly
+        return 7 * MS_PER_DAY;
     }
   }
 }
