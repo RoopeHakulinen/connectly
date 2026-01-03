@@ -44,7 +44,7 @@
   },
   "overrides": {
     "@ngneat/query": {
-      "@angular/core": "$@angular/core"
+      "@angular/core": "> 21.0.0"
     }
   }
 }
