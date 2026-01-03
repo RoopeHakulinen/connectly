@@ -1,6 +1,5 @@
 <div class="dashboard-container">
-  <h1>Dashboard</h1>
-  <p class="subtitle">Your upcoming deadlines</p>
+  <h1>{{ 'DASHBOARD.TITLE' | translate }}</h1>
 
   @if (upcomingTargets$ | async; as query) {
     @if (query.isLoading) {
@@ -11,7 +10,7 @@
       @if (query.data.length === 0) {
         <div class="empty-state">
           <mat-icon>event_available</mat-icon>
-          <p>No upcoming deadlines. You're all caught up!</p>
+          <p>{{ 'DASHBOARD.EMPTY.TITLE' | translate }}</p>
         </div>
       } @else {
         <div class="cards-grid">
@@ -32,12 +31,12 @@
                 @if (target.lastActivity) {
                   <p class="last-activity">
                     <mat-icon>history</mat-icon>
-                    Last contact: {{ target.lastActivity | date:'mediumDate' }}
+                    {{ 'DASHBOARD.CARD.LAST_CONTACT' | translate }} {{ target.lastActivity | date:'mediumDate' }}
                   </p>
                 } @else {
                   <p class="last-activity no-activity">
                     <mat-icon>warning</mat-icon>
-                    No previous contact
+                    {{ 'DASHBOARD.CARD.NO_CONTACT' | translate }}
                   </p>
                 }
                 @if (target.notes) {

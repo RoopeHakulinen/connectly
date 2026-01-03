@@ -4,6 +4,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { DashboardService, UpcomingTarget } from './dashboard.service';
 
 @Component({
@@ -15,12 +16,14 @@ import { DashboardService, UpcomingTarget } from './dashboard.service';
     MatIconModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    TranslateModule,
   ],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent {
   upcomingTargets$ = inject(DashboardService).getUpcomingDeadlines();
+  private translate = inject(TranslateService);
 
   getIconForType(type: string): string {
     return type === 'FRIEND' ? 'person' : 'task_alt';
@@ -34,15 +37,15 @@ export class DashboardComponent {
 
     if (target.isOverdue) {
       const overdueDays = Math.abs(diffDays);
-      if (overdueDays === 0) return 'Due today';
-      if (overdueDays === 1) return '1 day overdue';
-      return `${overdueDays} days overdue`;
+      if (overdueDays === 0) return this.translate.instant('DASHBOARD.DEADLINE.TODAY');
+      if (overdueDays === 1) return this.translate.instant('DASHBOARD.DEADLINE.OVERDUE_DAY');
+      return this.translate.instant('DASHBOARD.DEADLINE.OVERDUE_DAYS', { count: overdueDays });
     }
 
-    if (diffDays === 0) return 'Due today';
-    if (diffDays === 1) return 'Due tomorrow';
-    if (diffDays < 7) return `Due in ${diffDays} days`;
-    if (diffDays < 14) return 'Due in 1 week';
-    return `Due in ${Math.floor(diffDays / 7)} weeks`;
+    if (diffDays === 0) return this.translate.instant('DASHBOARD.DEADLINE.TODAY');
+    if (diffDays === 1) return this.translate.instant('DASHBOARD.DEADLINE.TOMORROW');
+    if (diffDays < 7) return this.translate.instant('DASHBOARD.DEADLINE.DAYS', { count: diffDays });
+    if (diffDays < 14) return this.translate.instant('DASHBOARD.DEADLINE.WEEK');
+    return this.translate.instant('DASHBOARD.DEADLINE.WEEKS', { count: Math.floor(diffDays / 7) });
   }
 }

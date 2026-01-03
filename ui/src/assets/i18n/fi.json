@@ -1,0 +1,31 @@
+{
+  "LOGIN": {
+    "TAGLINE": "Pysy yhteydessä tärkeimpiin ihmisiin",
+    "FEATURES": {
+      "RELATIONSHIPS": "Seuraa kaikkia tärkeitä ihmissuhteitasi yhdessä paikassa",
+      "REMINDERS": "Saat muistutuksen, kun on aika ottaa yhteyttä",
+      "HISTORY": "Pidä kirjaa muistiinpanoista ja vuorovaikutuksista"
+    },
+    "SIGN_IN_WITH_GOOGLE": "Kirjaudu Google-tilillä"
+  },
+  "DASHBOARD": {
+    "TITLE": "Tulevat takarajat",
+    "LOADING": "Ladataan...",
+    "EMPTY": {
+      "TITLE": "Ei tulevia takarajoja. Olet ajan tasalla!"
+    },
+    "CARD": {
+      "LAST_CONTACT": "Viimeisin yhteydenotto:",
+      "NO_CONTACT": "Ei aiempaa yhteydenottoa"
+    },
+    "DEADLINE": {
+      "TODAY": "Tänään",
+      "TOMORROW": "Huomenna",
+      "DAYS": "{{count}} päivän päästä",
+      "WEEK": "Viikon päästä",
+      "WEEKS": "{{count}} viikon päästä",
+      "OVERDUE_DAY": "1 päivä myöhässä",
+      "OVERDUE_DAYS": "{{count}} päivää myöhässä"
+    }
+  }
+}

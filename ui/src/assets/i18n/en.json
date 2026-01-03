@@ -1,0 +1,31 @@
+{
+  "LOGIN": {
+    "TAGLINE": "Stay connected with the people who matter most",
+    "FEATURES": {
+      "RELATIONSHIPS": "Track all your important relationships in one place",
+      "REMINDERS": "Get reminders when it's time to reach out",
+      "HISTORY": "Keep notes and history of your interactions"
+    },
+    "SIGN_IN_WITH_GOOGLE": "Sign in with Google"
+  },
+  "DASHBOARD": {
+    "TITLE": "Your upcoming deadlines",
+    "LOADING": "Loading...",
+    "EMPTY": {
+      "TITLE": "No upcoming deadlines. You're all caught up!"
+    },
+    "CARD": {
+      "LAST_CONTACT": "Last contact:",
+      "NO_CONTACT": "No previous contact"
+    },
+    "DEADLINE": {
+      "TODAY": "Due today",
+      "TOMORROW": "Due tomorrow",
+      "DAYS": "Due in {{count}} days",
+      "WEEK": "Due in 1 week",
+      "WEEKS": "Due in {{count}} weeks",
+      "OVERDUE_DAY": "1 day overdue",
+      "OVERDUE_DAYS": "{{count}} days overdue"
+    }
+  }
+}
