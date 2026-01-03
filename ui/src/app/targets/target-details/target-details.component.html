@@ -25,7 +25,7 @@
         <mat-card-content>
           <div class="info-row">
             <span class="label">{{ 'TARGET_DETAILS.INFO.TYPE' | translate }}</span>
-            <mat-chip>{{ query.data.type }}</mat-chip>
+            <mat-chip>{{ 'TARGETS.TYPES.' + query.data.type | translate }}</mat-chip>
           </div>
           @if (query.data.notes) {
             <div class="info-row">

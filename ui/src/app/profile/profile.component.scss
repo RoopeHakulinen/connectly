@@ -6,15 +6,26 @@
   }
 
   > p {
-    color: #666;
+    color: var(--text-secondary);
     margin-bottom: 24px;
   }
 }
 
 .settings-card {
   max-width: 400px;
+  margin-bottom: 16px;
+  background: var(--card-bg);
 
   mat-card-content {
     padding-top: 16px;
+  }
+
+  mat-button-toggle-group {
+    mat-icon {
+      margin-right: 4px;
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+    }
   }
 }

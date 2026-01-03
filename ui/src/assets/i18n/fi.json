@@ -1,4 +1,12 @@
 {
+  "COMMON": {
+    "CANCEL": "Peruuta",
+    "DELETE": "Poista",
+    "VIEW": "Näytä",
+    "EDIT": "Muokkaa",
+    "SAVE": "Tallenna",
+    "LOADING": "Ladataan..."
+  },
   "NAV": {
     "DASHBOARD": "Etusivu",
     "TARGETS": "Kohteet",
@@ -40,6 +48,12 @@
     "DESCRIPTION": "Hallitse tilisi asetuksia täällä.",
     "LANGUAGE": {
       "TITLE": "Kieli"
+    },
+    "THEME": {
+      "TITLE": "Teema",
+      "SYSTEM": "Järjestelmä",
+      "LIGHT": "Vaalea",
+      "DARK": "Tumma"
     }
   },
   "RECURRENCE": {
@@ -72,6 +86,21 @@
       "OTHER": "Muu"
     }
   },
+  "TARGETS": {
+    "TITLE": "Kohteet",
+    "SUBTITLE": "Hallitse ystäviäsi ja tehtäviäsi",
+    "NEW": "Uusi kohde",
+    "EMPTY": "Ei kohteita. Luo ensimmäinen aloittaaksesi!",
+    "NO_NOTES": "Ei muistiinpanoja",
+    "DELETE": {
+      "TITLE": "Poista kohde",
+      "MESSAGE": "Haluatko varmasti poistaa kohteen {{name}}?"
+    },
+    "TYPES": {
+      "FRIEND": "Ystävä",
+      "TASK": "Tehtävä"
+    }
+  },
   "TARGET_DETAILS": {
     "INFO": {
       "TITLE": "Tiedot",
@@ -82,5 +111,18 @@
       "TITLE": "Aktiviteettihistoria",
       "EMPTY": "Ei vielä kirjattuja aktiviteetteja"
     }
+  },
+  "TARGET_DIALOG": {
+    "TITLE_NEW": "Uusi kohde",
+    "TITLE_EDIT": "Muokkaa kohdetta",
+    "NAME": "Nimi",
+    "NAME_PLACEHOLDER": "esim. Matti Meikäläinen tai Kuukausiraportti",
+    "TYPE": "Tyyppi",
+    "FREQUENCY": "Tiheys",
+    "NOTES": "Muistiinpanot"
+  },
+  "TIERS": {
+    "TITLE": "Tasot",
+    "DESCRIPTION": "Määritä yhteydenpitotiheystasosi täällä."
   }
 }

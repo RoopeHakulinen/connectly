@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-tiers',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './tiers.component.html',
   styleUrl: './tiers.component.scss',
 })

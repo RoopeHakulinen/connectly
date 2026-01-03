@@ -36,7 +36,7 @@
 
   <mat-sidenav-content class="sidenav-content">
     <mat-toolbar class="gradient-toolbar">
-      <span>Dashboard</span>
+      <span>{{ currentTitleKey() | translate }}</span>
     </mat-toolbar>
     <div class="content">
       <router-outlet></router-outlet>

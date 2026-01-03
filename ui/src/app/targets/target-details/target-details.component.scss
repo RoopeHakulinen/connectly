@@ -36,7 +36,7 @@
 
     .subtitle {
       margin: 0;
-      color: rgba(0, 0, 0, 0.6);
+      color: var(--text-muted);
     }
   }
 }
@@ -44,6 +44,7 @@
 .details-card,
 .activities-card {
   margin-bottom: 16px;
+  background: var(--card-bg);
 
   mat-card-content {
     padding-top: 16px;
@@ -63,7 +64,7 @@
   .label {
     font-weight: 500;
     min-width: 80px;
-    color: rgba(0, 0, 0, 0.6);
+    color: var(--text-muted);
   }
 
   .value {
@@ -76,7 +77,7 @@
   flex-direction: column;
   align-items: center;
   padding: 32px;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-muted);
 
   mat-icon {
     font-size: 48px;

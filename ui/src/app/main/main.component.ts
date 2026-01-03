@@ -1,12 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
@@ -27,6 +27,7 @@ import { TranslateModule } from '@ngx-translate/core';
 })
 export class MainComponent {
   private breakpointObserver = inject(BreakpointObserver);
+  private router = inject(Router);
 
   isMobile$ = this.breakpointObserver
     .observe([Breakpoints.Handset])
@@ -38,4 +39,18 @@ export class MainComponent {
     { path: 'tiers', labelKey: 'NAV.TIERS', icon: 'layers' },
     { path: 'profile', labelKey: 'NAV.PROFILE', icon: 'person' },
   ];
+
+  currentTitleKey = signal('NAV.DASHBOARD');
+
+  constructor() {
+    this.router.events
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => {
+        const currentPath = this.router.url.split('/')[1];
+        const navItem = this.navItems.find((item) => item.path === currentPath);
+        if (navItem) {
+          this.currentTitleKey.set(navItem.labelKey);
+        }
+      });
+  }
 }

@@ -1,5 +1,147 @@
 @use "@angular/material" as mat;
 
+// Define custom theme palettes
+$connectly-primary: mat.m2-define-palette(mat.$m2-indigo-palette, 400);
+$connectly-accent: mat.m2-define-palette(mat.$m2-purple-palette, 400);
+
+// Light theme
+$connectly-light-theme: mat.m2-define-light-theme(
+    (
+      color: (
+        primary: $connectly-primary,
+        accent: $connectly-accent,
+      ),
+      typography: mat.m2-define-typography-config(),
+    )
+);
+
+// Dark theme
+$connectly-dark-theme: mat.m2-define-dark-theme(
+    (
+      color: (
+        primary: $connectly-primary,
+        accent: $connectly-accent,
+      ),
+    )
+);
+
+// Include core styles
+@include mat.core();
+
+// Apply light theme by default
+@include mat.all-component-themes($connectly-light-theme);
+
+// Dark theme override
+body.dark-theme {
+  @include mat.all-component-colors($connectly-dark-theme);
+}
+
+// ================================
+// CSS Custom Properties (Variables)
+// ================================
+
+:root {
+  // Brand colors (constant across themes)
+  --color-primary: #667eea;
+  --color-primary-rgb: 102, 126, 234;
+  --color-secondary: #764ba2;
+  --color-secondary-rgb: 118, 75, 162;
+
+  // Semantic colors
+  --color-error: #f44336;
+  --color-warning: #ff9800;
+  --color-success: #4caf50;
+
+  // Gradient
+  --gradient-primary: linear-gradient(
+      135deg,
+      var(--color-primary) 0%,
+      var(--color-secondary) 100%
+  );
+}
+
+// Light theme (default)
+body.light-theme,
+body:not(.dark-theme) {
+  // Backgrounds
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-elevated: #ffffff;
+
+  // Text
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --text-muted: rgba(0, 0, 0, 0.6);
+  --text-disabled: rgba(0, 0, 0, 0.38);
+
+  // Borders & Dividers
+  --border-color: rgba(0, 0, 0, 0.12);
+  --divider-color: rgba(0, 0, 0, 0.12);
+
+  // Shadows
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+  --shadow-xl: 0 10px 40px rgba(0, 0, 0, 0.2);
+
+  // Card
+  --card-bg: #ffffff;
+  --card-border: transparent;
+
+  // Overdue/Status colors
+  --overdue-bg: #ffebee;
+  --overdue-text: #c62828;
+  --overdue-border: #f44336;
+
+  // Active/Hover states
+  --active-bg: rgba(102, 126, 234, 0.1);
+  --hover-bg: rgba(0, 0, 0, 0.04);
+
+  // Toolbar text (on gradient)
+  --toolbar-text: #ffffff;
+}
+
+// Dark theme
+body.dark-theme {
+  // Backgrounds
+  --bg-primary: #121212;
+  --bg-secondary: #1e1e1e;
+  --bg-elevated: #2d2d2d;
+
+  // Text
+  --text-primary: #e0e0e0;
+  --text-secondary: #a0a0a0;
+  --text-muted: rgba(255, 255, 255, 0.6);
+  --text-disabled: rgba(255, 255, 255, 0.38);
+
+  // Borders & Dividers
+  --border-color: rgba(255, 255, 255, 0.12);
+  --divider-color: rgba(255, 255, 255, 0.12);
+
+  // Shadows (subtle in dark mode)
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 2px 4px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.4), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-xl: 0 10px 40px rgba(0, 0, 0, 0.5);
+
+  // Card
+  --card-bg: #2d2d2d;
+  --card-border: rgba(255, 255, 255, 0.08);
+
+  // Overdue/Status colors (adjusted for dark)
+  --overdue-bg: rgba(244, 67, 54, 0.15);
+  --overdue-text: #ef9a9a;
+  --overdue-border: #f44336;
+
+  // Active/Hover states
+  --active-bg: rgba(102, 126, 234, 0.2);
+  --hover-bg: rgba(255, 255, 255, 0.08);
+
+  // Toolbar text
+  --toolbar-text: #ffffff;
+}
+
+// Base styles
 html,
 body {
   height: 100%;
@@ -8,4 +150,7 @@ body {
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

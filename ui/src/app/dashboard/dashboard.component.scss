@@ -19,7 +19,7 @@
   flex-direction: column;
   align-items: center;
   padding: 48px;
-  color: rgba(0, 0, 0, 0.6);
+  color: var(--text-muted);
 
   mat-icon {
     font-size: 64px;
@@ -36,6 +36,7 @@
 }
 
 mat-card {
+  background: var(--card-bg);
   transition: box-shadow 0.2s ease;
 
   &.clickable {
@@ -43,17 +44,15 @@ mat-card {
   }
 
   &:hover {
-    box-shadow:
-      0 4px 8px rgba(0, 0, 0, 0.1),
-      0 2px 4px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--shadow-lg);
   }
 
   &.overdue {
-    border-left: 4px solid #f44336;
+    border-left: 4px solid var(--overdue-border);
 
     mat-chip {
-      background-color: #ffebee;
-      color: #c62828;
+      background-color: var(--overdue-bg);
+      color: var(--overdue-text);
     }
   }
 
@@ -79,7 +78,7 @@ mat-card {
       display: flex;
       align-items: center;
       gap: 8px;
-      color: rgba(0, 0, 0, 0.6);
+      color: var(--text-muted);
       font-size: 14px;
       margin: 0 0 8px 0;
 
@@ -90,13 +89,13 @@ mat-card {
       }
 
       &.no-activity {
-        color: #ff9800;
+        color: var(--color-warning);
       }
     }
 
     .notes {
       font-size: 14px;
-      color: rgba(0, 0, 0, 0.6);
+      color: var(--text-muted);
       margin: 0;
       overflow: hidden;
       text-overflow: ellipsis;

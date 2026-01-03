@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CreateTargetDto, Target, TargetsService, UpdateTargetDto } from '../targets.service';
 import { TargetDialogComponent } from './target-dialog/target-dialog.component';
 import { RecurrencePipe } from '../shared/pipes/recurrence.pipe';
@@ -25,6 +26,7 @@ import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/conf
     MatChipsModule,
     MatProgressSpinnerModule,
     RecurrencePipe,
+    TranslateModule,
   ],
   templateUrl: './targets.component.html',
   styleUrl: './targets.component.scss',
@@ -32,6 +34,7 @@ import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/conf
 export class TargetsComponent {
   private targetsService = inject(TargetsService);
   private dialog = inject(MatDialog);
+  private translate = inject(TranslateService);
 
   targets$ = this.targetsService.getTargets();
 
@@ -61,9 +64,9 @@ export class TargetsComponent {
   delete(target: Target) {
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Delete Target',
-        message: `Are you sure you want to delete ${target.name}?`,
-        confirmText: 'Delete',
+        title: this.translate.instant('TARGETS.DELETE.TITLE'),
+        message: this.translate.instant('TARGETS.DELETE.MESSAGE', { name: target.name }),
+        confirmText: this.translate.instant('COMMON.DELETE'),
       },
     });
 

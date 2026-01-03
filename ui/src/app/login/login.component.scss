@@ -5,6 +5,7 @@
   align-items: center;
   width: 100%;
   height: 100%;
+  background: var(--bg-secondary);
 }
 
 .language-selector {
@@ -18,22 +19,22 @@
   }
 
   ::ng-deep .mat-button-toggle {
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
 
     &.mat-button-toggle-checked {
-      background: white;
-      color: #667eea;
+      background: var(--bg-primary);
+      color: var(--color-primary);
       font-weight: 600;
     }
   }
 }
 
 .login-card {
-  background: white;
+  background: var(--bg-primary);
   border-radius: 16px;
   padding: 48px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-xl);
   text-align: center;
   max-width: 400px;
   width: 90%;
@@ -42,13 +43,13 @@
 .app-name {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #333;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .tagline {
   font-size: 1.1rem;
-  color: #666;
+  color: var(--text-secondary);
   margin: 0 0 32px 0;
 }
 
@@ -64,10 +65,10 @@
   align-items: center;
   gap: 12px;
   text-align: left;
-  color: #444;
+  color: var(--text-primary);
 
   mat-icon {
-    color: #667eea;
+    color: var(--color-primary);
   }
 
   span {
@@ -80,14 +81,14 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   -webkit-appearance: none;
-  background-color: #f2f2f2;
+  background-color: var(--bg-secondary);
   background-image: none;
   border: none;
   -webkit-border-radius: 20px;
   border-radius: 20px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  color: #1f1f1f;
+  color: var(--text-primary);
   cursor: pointer;
   font-family: 'Roboto', arial, sans-serif;
   font-size: 14px;
@@ -151,11 +152,11 @@
 
 .gsi-material-button:disabled {
   cursor: default;
-  background-color: #ffffff61;
+  background-color: var(--text-disabled);
 }
 
 .gsi-material-button:disabled .gsi-material-button-state {
-  background-color: #1f1f1f1f;
+  background-color: var(--text-disabled);
 }
 
 .gsi-material-button:disabled .gsi-material-button-contents {
@@ -168,16 +169,15 @@
 
 .gsi-material-button:not(:disabled):active .gsi-material-button-state,
 .gsi-material-button:not(:disabled):focus .gsi-material-button-state {
-  background-color: #001d35;
+  background-color: var(--hover-bg);
   opacity: 12%;
 }
 
 .gsi-material-button:not(:disabled):hover {
-  -webkit-box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
-  box-shadow: 0 1px 2px 0 rgba(60, 64, 67, .30), 0 1px 3px 1px rgba(60, 64, 67, .15);
+  box-shadow: var(--shadow-md);
 }
 
 .gsi-material-button:not(:disabled):hover .gsi-material-button-state {
-  background-color: #001d35;
+  background-color: var(--hover-bg);
   opacity: 8%;
 }

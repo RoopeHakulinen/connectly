@@ -1,15 +1,12 @@
 import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import {
-  MAT_DIALOG_DATA,
-  MatDialogModule,
-  MatDialogRef,
-} from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatButtonModule } from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 import { TiersService } from '../../tiers/tiers.service';
 import { Target, TargetType } from '../../targets.service';
 import { RecurrencePipe } from '../../shared/pipes/recurrence.pipe';
@@ -24,9 +21,9 @@ import { RecurrencePipe } from '../../shared/pipes/recurrence.pipe';
     MatSelectModule,
     MatButtonModule,
     ReactiveFormsModule,
-    ReactiveFormsModule,
     AsyncPipe,
     RecurrencePipe,
+    TranslateModule,
   ],
   templateUrl: './target-dialog.component.html',
   styleUrl: './target-dialog.component.scss',
