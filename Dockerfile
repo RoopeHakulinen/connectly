@@ -38,4 +38,4 @@ COPY --from=backend /home/node/backend/prisma/ /home/node/prisma/
 COPY --from=ui /home/node/ui/dist/ui /home/node/dist/public
 ENV PATH /home/node/node_modules/.bin:$PATH
 
-CMD ["node","dist/src/main.js"]
+CMD ["./start.sh"]

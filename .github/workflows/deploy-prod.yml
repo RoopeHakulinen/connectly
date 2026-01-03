@@ -1,0 +1,16 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    uses: ./.github/workflows/deploy.yml
+    with:
+      environment: prod
+      aws_region: eu-west-1
+      ecr_repository: connectly
+      ecs_cluster: application-prod
+      ecs_service: connectly-service

@@ -6,6 +6,8 @@ resource "aws_ecs_task_definition" "app" {
   family                   = "connectly-app"
   network_mode             = "awsvpc"
   requires_compatibilities = ["FARGATE"]
+  cpu                      = 256
+  memory                   = 512
   execution_role_arn       = aws_iam_role.ecs_task_execution.arn
   container_definitions    = jsonencode([
     {
@@ -35,11 +37,11 @@ resource "aws_ecs_task_definition" "app" {
       ],
       secrets = [
         {
-          "name"      = "CLIENT_ID",
+          "name"      = "GOOGLE_CLIENT_ID",
           "valueFrom" = aws_secretsmanager_secret.client_id.arn
         },
         {
-          "name"      = "CLIENT_SECRET",
+          "name"      = "GOOGLE_CLIENT_SECRET",
           "valueFrom" = aws_secretsmanager_secret.client_secret.arn
         }
       ]
@@ -58,14 +60,14 @@ resource "aws_ecs_service" "app" {
   wait_for_steady_state = true
 
   network_configuration {
-    subnets          = [aws_subnet.primary.id]
-    security_groups  = [aws_security_group.lb.id]
+    subnets          = [aws_subnet.primary.id, aws_subnet.secondary.id]
+    security_groups  = [aws_security_group.ecs_task.id]
     assign_public_ip = true
   }
 
   load_balancer {
     target_group_arn = aws_lb_target_group.connectly.id
-    container_name   = "connectly-app-${var.environment}"
+    container_name   = "app-container"
     container_port   = 3000
   }
 

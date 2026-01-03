@@ -3,7 +3,7 @@ resource "aws_lb" "main" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.lb.id]
-  subnets            = [aws_subnet.primary.id]
+  subnets            = [aws_subnet.primary.id, aws_subnet.secondary.id]
 }
 
 resource "aws_lb_target_group" "connectly" {

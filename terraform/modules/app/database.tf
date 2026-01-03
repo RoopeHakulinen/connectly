@@ -1,7 +1,7 @@
 resource "aws_db_instance" "app" {
   allocated_storage         = 10
   engine                    = "postgres"
-  engine_version            = "17.1"
+  engine_version            = "18.1"
   instance_class            = "db.t3.micro"
   db_name                   = "app"
   username                  = "app"

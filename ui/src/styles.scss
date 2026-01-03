@@ -154,3 +154,17 @@ body {
   color: var(--text-primary);
   transition: background-color 0.3s ease, color 0.3s ease;
 }
+
+.page-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @media (max-width: 599px) {
+    padding: 16px;
+  }
+
+  h1 {
+    margin-top: 0;
+  }
+}

@@ -1,1 +1,2 @@
 .idea/
+terraform/environments/prod/terraform.tfvars

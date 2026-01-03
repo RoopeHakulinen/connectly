@@ -8,8 +8,7 @@ locals {
 
 module "app" {
   source        = "../../modules/app"
-  region        = local.region
-  zone          = local.default-zone
+
   app_image     = local.images.app
   environment   = var.environment
   client_id     = var.client_id

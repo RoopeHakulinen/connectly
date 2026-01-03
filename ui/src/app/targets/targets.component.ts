@@ -45,7 +45,8 @@ export class TargetsComponent {
   openDialog(target?: Target) {
     const dialogRef = this.dialog.open(TargetDialogComponent, {
       data: { target },
-      width: '500px',
+      width: '100%',
+      maxWidth: '500px',
     });
 
     dialogRef.afterClosed().subscribe((result) => {

@@ -1,8 +1,4 @@
-.page-container {
-  padding: 24px;
-  max-width: 800px;
-  margin: 0 auto;
-}
+.page-container {}
 
 .loading-container {
   display: flex;
@@ -96,10 +92,6 @@ mat-list {
 }
 
 @media (max-width: 599px) {
-  .page-container {
-    padding: 16px;
-  }
-
   .header {
     .avatar {
       width: 48px;

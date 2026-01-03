@@ -1,8 +1,4 @@
-.dashboard-container {
-  padding: 24px;
-  max-width: 1200px;
-  margin: 0 auto;
-
+.page-container {
   h1 {
     margin: 0 0 24px 0;
   }
@@ -107,9 +103,6 @@ mat-card {
 }
 
 @media (max-width: 599px) {
-  .dashboard-container {
-    padding: 16px;
-  }
 
   .cards-grid {
     grid-template-columns: 1fr;
