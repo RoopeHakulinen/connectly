@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     uses: ./.github/workflows/deploy.yml
+    secrets: inherit
     with:
       environment: prod
       aws_region: eu-west-1
