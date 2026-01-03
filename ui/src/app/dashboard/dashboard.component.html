@@ -1,17 +1,53 @@
 <div class="dashboard-container">
-  <div class="targets-container">
-    @if (targets$ | async; as targetsQuery) {
-      @if (targetsQuery.data; as targets) {
-        @for (target of targets; track $index) {
-          <div class="target">
-            <div class="type">{{ target.type }}</div>
-            <div class="name">{{ target.name }}</div>
-            <div class="tier">{{ target.tier.interval }}</div>
-          </div>
-        }
+  <h1>Dashboard</h1>
+  <p class="subtitle">Your upcoming deadlines</p>
+
+  @if (upcomingTargets$ | async; as query) {
+    @if (query.isLoading) {
+      <div class="loading-container">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    } @else if (query.data) {
+      @if (query.data.length === 0) {
+        <div class="empty-state">
+          <mat-icon>event_available</mat-icon>
+          <p>No upcoming deadlines. You're all caught up!</p>
+        </div>
+      } @else {
+        <div class="cards-grid">
+          @for (target of query.data; track target.id) {
+            <mat-card [class.overdue]="target.isOverdue">
+              <mat-card-header>
+                <mat-icon mat-card-avatar>{{ getIconForType(target.type) }}</mat-icon>
+                <mat-card-title>{{ target.name }}</mat-card-title>
+                <mat-card-subtitle>
+                  <mat-chip-set>
+                    <mat-chip [highlighted]="target.isOverdue">
+                      {{ getRelativeDeadline(target) }}
+                    </mat-chip>
+                  </mat-chip-set>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content>
+                @if (target.lastActivity) {
+                  <p class="last-activity">
+                    <mat-icon>history</mat-icon>
+                    Last contact: {{ target.lastActivity | date:'mediumDate' }}
+                  </p>
+                } @else {
+                  <p class="last-activity no-activity">
+                    <mat-icon>warning</mat-icon>
+                    No previous contact
+                  </p>
+                }
+                @if (target.notes) {
+                  <p class="notes">{{ target.notes }}</p>
+                }
+              </mat-card-content>
+            </mat-card>
+          }
+        </div>
       }
     }
-    <mat-divider></mat-divider>
-    <button mat-flat-button>Create a new target</button>
-  </div>
+  }
 </div>

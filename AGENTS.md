@@ -80,6 +80,9 @@ Key models in `backend/prisma/schema.prisma`:
 2. Always use @ngneat/query to query and mutate data
 3. Don't use Angular signals
 
+## Backend coding style
+1. Don't use NestJS modules for anything
+
 ## General coding style
 1. Do not unnecessarily comment things that are obvious (e.g. `// Fetch timeline data from backend`)
 2. Don't use abbreviations unless they are very common (e.g. "id" is ok, "usr" is not) and do not use one-letter names for e.g. iteration variables (`let u of users`)

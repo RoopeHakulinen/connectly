@@ -1,30 +1,113 @@
 .dashboard-container {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  h1 {
+    margin: 0 0 4px 0;
+  }
+
+  .subtitle {
+    color: rgba(0, 0, 0, 0.6);
+    margin: 0 0 24px 0;
+  }
+}
+
+.loading-container {
   display: flex;
-  flex-grow: 1;
-  width: 100%;
+  justify-content: center;
+  padding: 48px;
+}
 
-  .targets-container {
-    width: 100%;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    row-gap: 10px;
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px;
+  color: rgba(0, 0, 0, 0.6);
 
-    .target {
+  mat-icon {
+    font-size: 64px;
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+  }
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+mat-card {
+  transition: box-shadow 0.2s ease;
+
+  &:hover {
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.1),
+      0 2px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  &.overdue {
+    border-left: 4px solid #f44336;
+
+    mat-chip {
+      background-color: #ffebee;
+      color: #c62828;
+    }
+  }
+
+  mat-card-header {
+    mat-icon[mat-card-avatar] {
+      background-color: #e3f2fd;
+      border-radius: 50%;
+      padding: 8px;
+      color: #1976d2;
+    }
+  }
+
+  mat-card-content {
+    padding-top: 16px;
+
+    .last-activity {
       display: flex;
-      column-gap: 20px;
       align-items: center;
+      gap: 8px;
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 14px;
+      margin: 0 0 8px 0;
 
-      .type {
-        border-radius: 10px;
-        background-color: darkslategrey;
-        padding: 5px 20px;
-        color: whitesmoke;
+      mat-icon {
+        font-size: 18px;
+        width: 18px;
+        height: 18px;
       }
 
-      .name {
-        flex-grow: 1;
+      &.no-activity {
+        color: #ff9800;
       }
     }
+
+    .notes {
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+}
+
+@media (max-width: 599px) {
+  .dashboard-container {
+    padding: 16px;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
   }
 }
