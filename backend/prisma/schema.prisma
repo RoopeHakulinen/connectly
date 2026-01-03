@@ -19,7 +19,7 @@ model Target {
   id         Int        @id() @default(autoincrement())
   name       String
   notes      String
-  type TargetType
+  type       TargetType
   tier       Tier       @relation(fields: [tierId], references: [id])
   user       User       @relation(fields: [userId], references: [id])
   userId     Int
@@ -29,9 +29,9 @@ model Target {
 
 model Tier {
   id       Int      @id() @default(autoincrement())
-  priority Int
+  interval String
   user     User     @relation(fields: [userId], references: [id])
-  targets Target[]
+  targets  Target[]
   userId   Int
 }
 
@@ -39,8 +39,8 @@ model Activity {
   id        Int          @id() @default(autoincrement())
   type      ActivityType
   timestamp DateTime     @updatedAt
-  target   Target @relation(fields: [targetId], references: [id], onDelete: Cascade)
-  targetId Int
+  target    Target       @relation(fields: [targetId], references: [id], onDelete: Cascade)
+  targetId  Int
 }
 
 enum ActivityType {
