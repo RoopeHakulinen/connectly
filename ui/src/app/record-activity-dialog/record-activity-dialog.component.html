@@ -1,5 +1,5 @@
 <h2 mat-dialog-title>{{ 'RECORD_ACTIVITY.TITLE' | translate }}</h2>
-<p class="subtitle">{{ data.targetName }}</p>
+<p class="description">{{ 'RECORD_ACTIVITY.DESCRIPTION' | translate: { name: data.targetName } }}</p>
 
 <mat-dialog-content>
   <form [formGroup]="form">

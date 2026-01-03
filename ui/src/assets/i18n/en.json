@@ -76,6 +76,7 @@
   },
   "RECORD_ACTIVITY": {
     "TITLE": "Record Activity",
+    "DESCRIPTION": "Recording activity for {{name}}",
     "TYPE": "Activity type",
     "DATE": "Date",
     "CANCEL": "Cancel",
