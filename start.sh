@@ -14,4 +14,4 @@ echo "Listing /home/node/dist:"
 ls -la /home/node/dist
 echo "Finding index.html..."
 find /home/node -name "index.html"
-exec node dist/main.js
+exec node dist/src/main.js
