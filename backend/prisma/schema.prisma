@@ -16,17 +16,17 @@ model User {
 }
 
 model Target {
-  id         Int        @id() @default(autoincrement())
-  name       String
-  notes      String
-  type       TargetType
-  tier       Tier       @relation(fields: [tierId], references: [id])
-  user       User       @relation(fields: [userId], references: [id])
-  userId     Int
-  tierId     Int
-  notificationEnabled Boolean @default(false)
+  id                  Int        @id() @default(autoincrement())
+  name                String
+  notes               String
+  type                TargetType
+  tier                Tier       @relation(fields: [tierId], references: [id])
+  user                User       @relation(fields: [userId], references: [id])
+  userId              Int
+  tierId              Int
+  notificationEnabled Boolean    @default(false)
   threeDaysBeforeNotificationSentAt DateTime?
-  activities Activity[]
+  activities          Activity[]
 }
 
 model Tier {
