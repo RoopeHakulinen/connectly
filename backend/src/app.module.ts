@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
+import { ScheduleModule } from '@nestjs/schedule';
 import { TargetsModule } from './targets/targets.module';
 import { TiersModule } from './tiers/tiers.module';
 import { UsersModule } from './users/users.module';
 import { DashboardController } from './dashboard/dashboard.controller';
 import { DashboardService } from './dashboard/dashboard.service';
+import { NotificationsService } from './notifications/notifications.service';
 import { PrismaService } from '../prisma.service';
 import { ConfigModule } from '@nestjs/config';
 import { authConfig } from './config/auth.config';
@@ -15,6 +17,7 @@ import { HealthController } from './health/health.controller';
 
 @Module({
   imports: [
+    ScheduleModule.forRoot(),
     TargetsModule,
     TiersModule,
     UsersModule,
@@ -30,6 +33,7 @@ import { HealthController } from './health/health.controller';
       useClass: AuthGuard,
     },
     DashboardService,
+    NotificationsService,
     PrismaService,
   ],
 })
