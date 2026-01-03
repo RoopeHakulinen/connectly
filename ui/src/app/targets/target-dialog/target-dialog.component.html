@@ -10,7 +10,7 @@
       <mat-label>{{ 'TARGET_DIALOG.TYPE' | translate }}</mat-label>
       <mat-select formControlName="type">
         @for (type of targetTypes; track type) {
-          <mat-option [value]="type">{{ 'TARGETS.TYPES.' + type | translate }}</mat-option>
+        <mat-option [value]="type">{{ 'TARGETS.TYPES.' + type | translate }}</mat-option>
         }
       </mat-select>
     </mat-form-field>
@@ -20,7 +20,7 @@
       <mat-select formControlName="tierId">
         @if (tiers$ | async; as result) {
         @if (result.isLoading) {
-          <mat-option disabled>{{ 'COMMON.LOADING' | translate }}</mat-option>
+        <mat-option disabled>{{ 'COMMON.LOADING' | translate }}</mat-option>
         }
         @if (result.data) {
         @for (tier of result.data; track tier.id) {
@@ -35,6 +35,10 @@
       <mat-label>{{ 'TARGET_DIALOG.NOTES' | translate }}</mat-label>
       <textarea matInput formControlName="notes" rows="4"></textarea>
     </mat-form-field>
+
+    <mat-checkbox formControlName="notificationEnabled">
+      {{ 'TARGET_DIALOG.NOTIFICATION_ENABLED' | translate }}
+    </mat-checkbox>
   </form>
 </mat-dialog-content>
 <mat-dialog-actions align="end">

@@ -120,7 +120,8 @@
     "NAME_PLACEHOLDER": "e.g. John Doe or Monthly Report",
     "TYPE": "Type",
     "FREQUENCY": "Frequency",
-    "NOTES": "Notes"
+    "NOTES": "Notes",
+    "NOTIFICATION_ENABLED": "Do you want to be notified about this target?"
   },
   "TIERS": {
     "TITLE": "Tiers",

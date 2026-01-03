@@ -24,6 +24,7 @@ export class TargetsService {
             id: userId,
           },
         },
+        notificationEnabled: createTargetDto.notificationEnabled,
       },
     });
   }

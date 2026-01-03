@@ -14,6 +14,7 @@ export interface Target {
   notes: string;
   tier: Tier;
   activities: any[];
+  notificationEnabled: boolean;
 }
 
 export interface CreateTargetDto {
@@ -21,9 +22,10 @@ export interface CreateTargetDto {
   type: TargetType;
   notes: string;
   tierId: number;
+  notificationEnabled: boolean;
 }
 
-export interface UpdateTargetDto extends Partial<CreateTargetDto> {}
+export interface UpdateTargetDto extends Partial<CreateTargetDto> { }
 
 export interface Activity {
   id: number;

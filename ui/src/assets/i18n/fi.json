@@ -119,7 +119,8 @@
     "NAME_PLACEHOLDER": "esim. Matti Meikäläinen tai Kuukausiraportti",
     "TYPE": "Tyyppi",
     "FREQUENCY": "Tiheys",
-    "NOTES": "Muistiinpanot"
+    "NOTES": "Muistiinpanot",
+    "NOTIFICATION_ENABLED": "Haluatko ilmoituksia tästä kohteesta?"
   },
   "TIERS": {
     "TITLE": "Tasot",

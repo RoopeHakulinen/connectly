@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { AsyncPipe } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
@@ -20,6 +21,7 @@ import { RecurrencePipe } from '../../shared/pipes/recurrence.pipe';
     MatInputModule,
     MatSelectModule,
     MatButtonModule,
+    MatCheckboxModule,
     ReactiveFormsModule,
     AsyncPipe,
     RecurrencePipe,
@@ -42,6 +44,7 @@ export class TargetDialogComponent {
     type: ['FRIEND' as TargetType, Validators.required],
     tierId: [null as number | null, Validators.required],
     notes: [''],
+    notificationEnabled: [false],
   });
 
   isEditMode = false;
@@ -54,6 +57,7 @@ export class TargetDialogComponent {
         type: data.target.type,
         tierId: data.target.tier?.id,
         notes: data.target.notes,
+        notificationEnabled: data.target.notificationEnabled,
       });
     }
   }

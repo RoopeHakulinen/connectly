@@ -5,4 +5,5 @@ export class CreateTargetDto {
   type: TargetType;
   notes: string;
   tierId: number;
+  notificationEnabled: boolean;
 }
