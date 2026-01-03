@@ -9,7 +9,7 @@ export class NotificationsService {
   constructor(private prisma: PrismaService) {
   }
 
-  @Cron('* * * * *', { timeZone: 'UTC' })
+  @Cron('0 10 * * *', { timeZone: 'UTC' })
   async checkUpcomingDeadlines() {
     this.logger.log('Running daily deadline check...');
 
