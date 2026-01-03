@@ -33,5 +33,12 @@
       "OVERDUE_DAY": "1 päivä myöhässä",
       "OVERDUE_DAYS": "{{count}} päivää myöhässä"
     }
+  },
+  "PROFILE": {
+    "TITLE": "Profiili",
+    "DESCRIPTION": "Hallitse tilisi asetuksia täällä.",
+    "LANGUAGE": {
+      "TITLE": "Kieli"
+    }
   }
 }

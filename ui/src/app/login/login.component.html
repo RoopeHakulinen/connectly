@@ -1,4 +1,11 @@
 <div class="login-container">
+  <div class="language-selector">
+    <mat-button-toggle-group [value]="currentLanguage" (change)="changeLanguage($event.value)">
+      <mat-button-toggle value="en">EN</mat-button-toggle>
+      <mat-button-toggle value="fi">FI</mat-button-toggle>
+    </mat-button-toggle-group>
+  </div>
+
   <div class="login-card">
     <h1 class="app-name">Connectly</h1>
     <p class="tagline">{{ 'LOGIN.TAGLINE' | translate }}</p>
