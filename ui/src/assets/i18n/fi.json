@@ -135,6 +135,8 @@
   "TIER_DIALOG": {
     "TITLE_NEW": "Uusi taso",
     "TITLE_EDIT": "Muokkaa tasoa",
+    "NAME": "Nimi",
+    "NAME_PLACEHOLDER": "esim. Läheiset ystävät, Perhe, Kollegat",
     "FREQUENCY": "Tiheys",
     "INTERVAL": "Väli"
   }

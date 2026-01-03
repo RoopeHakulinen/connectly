@@ -206,6 +206,7 @@ export const CommonIntervals = {
   BIWEEKLY: TierInterval.biweekly(),
   MONTHLY: TierInterval.monthly(),
   QUARTERLY: TierInterval.quarterly(),
+  SEMIANNUALLY: TierInterval.monthly(6),
   YEARLY: TierInterval.yearly(),
   LAST_DAY_OF_MONTH: TierInterval.lastDayOfMonth(),
 } as const;

@@ -4,11 +4,13 @@ import { HttpClient } from '@angular/common/http';
 
 export interface Tier {
     id: number;
+  name: string;
     interval: string;
     userId: number;
 }
 
 export interface CreateTierDto {
+  name: string;
   interval: string;
 }
 

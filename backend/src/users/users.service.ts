@@ -38,16 +38,19 @@ export class UsersService {
     await this.prisma.tier.createMany({
       data: [
         {
-          userId: user.id,
-          interval: CommonIntervals.WEEKLY.toString(),
-        },
-        {
-          userId: user.id,
-          interval: CommonIntervals.BIWEEKLY.toString(),
-        },
-        {
+          name: 'Close friends',
           userId: user.id,
           interval: CommonIntervals.MONTHLY.toString(),
+        },
+        {
+          name: 'Friends',
+          userId: user.id,
+          interval: CommonIntervals.QUARTERLY.toString(),
+        },
+        {
+          name: 'Acquaintances',
+          userId: user.id,
+          interval: CommonIntervals.SEMIANNUALLY.toString(),
         },
       ],
     });

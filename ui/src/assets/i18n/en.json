@@ -136,6 +136,8 @@
   "TIER_DIALOG": {
     "TITLE_NEW": "New Tier",
     "TITLE_EDIT": "Edit Tier",
+    "NAME": "Name",
+    "NAME_PLACEHOLDER": "e.g. Close Friends, Family, Colleagues",
     "FREQUENCY": "Frequency",
     "INTERVAL": "Interval"
   }

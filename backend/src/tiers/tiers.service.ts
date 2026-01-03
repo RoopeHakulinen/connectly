@@ -10,6 +10,7 @@ export class TiersService {
   create(createTierDto: CreateTierDto, userId: number) {
     return this.prisma.tier.create({
       data: {
+        name: createTierDto.name,
         interval: createTierDto.interval,
         user: {
           connect: {

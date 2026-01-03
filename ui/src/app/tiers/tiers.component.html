@@ -27,7 +27,8 @@
             <mat-card>
               <mat-card-header>
                 <mat-icon mat-card-avatar>schedule</mat-icon>
-                <mat-card-title>{{ tier.interval | recurrence | async }}</mat-card-title>
+                <mat-card-title>{{ tier.name }}</mat-card-title>
+                <mat-card-subtitle>{{ tier.interval | recurrence | async }}</mat-card-subtitle>
               </mat-card-header>
               <mat-card-actions align="end">
                 <button mat-button (click)="openDialog(tier)">{{ 'COMMON.EDIT' | translate }}</button>

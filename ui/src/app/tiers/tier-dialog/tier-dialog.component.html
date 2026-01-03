@@ -2,6 +2,11 @@
 <mat-dialog-content>
   <form [formGroup]="form" class="tier-form">
     <mat-form-field appearance="outline">
+      <mat-label>{{ 'TIER_DIALOG.NAME' | translate }}</mat-label>
+      <input matInput formControlName="name" [placeholder]="'TIER_DIALOG.NAME_PLACEHOLDER' | translate" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
       <mat-label>{{ 'TIER_DIALOG.FREQUENCY' | translate }}</mat-label>
       <mat-select formControlName="frequency">
         @for (freq of frequencies; track freq) {

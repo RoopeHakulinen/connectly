@@ -32,6 +32,7 @@ export class TierDialogComponent {
   frequencies: Frequency[] = ['DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY'];
 
   form = this.fb.group({
+    name: ['', Validators.required],
     frequency: ['WEEKLY' as Frequency, Validators.required],
     interval: [1, [Validators.required, Validators.min(1)]],
   });
@@ -43,6 +44,7 @@ export class TierDialogComponent {
       this.isEditMode = true;
       const parsed = this.parseInterval(data.tier.interval);
       this.form.patchValue({
+        name: data.tier.name,
         frequency: parsed.frequency,
         interval: parsed.interval,
       });
@@ -66,7 +68,10 @@ export class TierDialogComponent {
 
   save() {
     if (this.form.valid) {
-      this.dialogRef.close({ interval: this.buildInterval() });
+      this.dialogRef.close({
+        name: this.form.value.name,
+        interval: this.buildInterval(),
+      });
     }
   }
 }
