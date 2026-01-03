@@ -1,48 +1,46 @@
 @if (isMobile$ | async) {
-  <!-- Mobile layout -->
-  <div class="mobile-layout">
-    <div class="mobile-content mat-app-background">
+<!-- Mobile layout -->
+<div class="mobile-layout">
+  <mat-toolbar class="gradient-toolbar">
+    <span>Connectly</span>
+  </mat-toolbar>
+  <div class="mobile-content">
+    <router-outlet></router-outlet>
+  </div>
+
+  <nav class="bottom-nav">
+    @for (item of navItems; track item.path) {
+    <a [routerLink]="item.path" routerLinkActive="active" class="nav-item">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span>{{ item.labelKey | translate }}</span>
+    </a>
+    }
+  </nav>
+</div>
+} @else {
+<!-- Desktop layout -->
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <div class="sidenav-header">
+      <h2>Connectly</h2>
+    </div>
+    <mat-nav-list>
+      @for (item of navItems; track item.path) {
+      <a mat-list-item [routerLink]="item.path" routerLinkActive="active">
+        <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+        <span matListItemTitle>{{ item.labelKey | translate }}</span>
+      </a>
+      }
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="sidenav-content">
+    <mat-toolbar class="gradient-toolbar">
+      <span>Dashboard</span>
+    </mat-toolbar>
+    <div class="content">
       <router-outlet></router-outlet>
     </div>
-
-    <nav class="bottom-nav">
-      @for (item of navItems; track item.path) {
-        <a
-          [routerLink]="item.path"
-          routerLinkActive="active"
-          class="nav-item"
-        >
-          <mat-icon>{{ item.icon }}</mat-icon>
-          <span>{{ item.labelKey | translate }}</span>
-        </a>
-      }
-    </nav>
-  </div>
-} @else {
-  <!-- Desktop layout -->
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav mode="side" opened class="sidenav">
-      <div class="sidenav-header">
-        <h2>Connectly</h2>
-      </div>
-      <mat-nav-list>
-        @for (item of navItems; track item.path) {
-          <a
-            mat-list-item
-            [routerLink]="item.path"
-            routerLinkActive="active"
-          >
-            <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
-            <span matListItemTitle>{{ item.labelKey | translate }}</span>
-          </a>
-        }
-      </mat-nav-list>
-    </mat-sidenav>
-
-    <mat-sidenav-content class="sidenav-content">
-      <div class="content mat-app-background">
-        <router-outlet></router-outlet>
-      </div>
-    </mat-sidenav-content>
-  </mat-sidenav-container>
+  </mat-sidenav-content>
+</mat-sidenav-container>
 }

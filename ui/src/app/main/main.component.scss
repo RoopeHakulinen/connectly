@@ -1,22 +1,40 @@
-// Desktop layout
 .sidenav-container {
   height: 100vh;
+  background: transparent;
 }
 
 .sidenav {
   width: 240px;
+  background: white;
+  border-right: none;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
 
   .sidenav-header {
     padding: 16px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 64px;
+    box-sizing: border-box;
 
     h2 {
       margin: 0;
+      color: #764ba2;
+      font-weight: 500;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 
   .active {
-    background-color: rgba(0, 0, 0, 0.04);
+    background-color: rgba(102, 126, 234, 0.1);
+    color: #667eea;
+
+    mat-icon {
+      color: #667eea;
+    }
   }
 }
 
@@ -25,9 +43,23 @@
   flex-direction: column;
 }
 
+.gradient-toolbar {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+
+  span {
+    font-weight: 500;
+    letter-spacing: 0.5px;
+  }
+}
+
 .content {
   flex: 1;
   overflow: auto;
+  background-color: #f5f7fa;
+  padding: 0;
 }
 
 // Mobile layout
@@ -40,6 +72,7 @@
 .mobile-content {
   flex: 1;
   overflow: auto;
+  background-color: #f5f7fa;
 }
 
 .bottom-nav {

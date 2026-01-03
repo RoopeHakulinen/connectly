@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { injectMutation, injectQuery, QueryClient } from '@ngneat/query';
+import { injectMutation, injectQuery, injectQueryClient } from '@ngneat/query';
 import { HttpClient } from '@angular/common/http';
 import { Tier } from './tiers/tiers.service';
 
@@ -21,7 +21,7 @@ export interface CreateTargetDto {
   tierId: number;
 }
 
-export interface UpdateTargetDto extends Partial<CreateTargetDto> { }
+export interface UpdateTargetDto extends Partial<CreateTargetDto> {}
 
 @Injectable({
   providedIn: 'root',
@@ -30,7 +30,7 @@ export class TargetsService {
   #query = injectQuery();
   #mutation = injectMutation();
   #http = inject(HttpClient);
-  #queryClient = inject(QueryClient);
+  #queryClient = injectQueryClient();
 
   getTargets() {
     return this.#query({

@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
@@ -14,6 +15,7 @@ import { TranslateModule } from '@ngx-translate/core';
   styleUrl: './main.component.scss',
   imports: [
     MatSidenavModule,
+    MatToolbarModule,
     MatListModule,
     MatIconModule,
     RouterOutlet,

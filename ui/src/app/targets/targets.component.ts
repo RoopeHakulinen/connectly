@@ -14,6 +14,7 @@ import {
 } from '../targets.service';
 import { TargetDialogComponent } from './target-dialog/target-dialog.component';
 import { RecurrencePipe } from '../shared/pipes/recurrence.pipe';
+import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-targets',
@@ -61,9 +62,19 @@ export class TargetsComponent {
   }
 
   delete(target: Target) {
-    if (confirm(`Are you sure you want to delete ${target.name}?`)) {
-      this.deleteMutation.mutate(target.id);
-    }
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Delete Target',
+        message: `Are you sure you want to delete ${target.name}?`,
+        confirmText: 'Delete',
+      },
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.deleteMutation.mutate(target.id);
+      }
+    });
   }
 
   getIconForType(type: string): string {
