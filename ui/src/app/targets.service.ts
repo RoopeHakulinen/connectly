@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 export type TargetType = 'FRIEND' | 'TASK';
 
 export interface Tier {
-  priority: number;
+  interval: string;
 }
 
 export interface Target {

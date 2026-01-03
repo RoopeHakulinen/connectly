@@ -33,11 +33,7 @@ export class TargetsService {
         userId,
       },
       include: {
-        tier: {
-          select: {
-            priority: true,
-          },
-        },
+        tier: true,
         activities: true,
       },
     });

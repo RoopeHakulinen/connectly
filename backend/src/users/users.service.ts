@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma.service';
 import { User } from '@prisma/client';
+import { CommonIntervals } from '../common/tier-interval';
 
 @Injectable()
 export class UsersService {
-  constructor(private prisma: PrismaService) {
-  }
+  constructor(private prisma: PrismaService) {}
 
   findAll() {
     return this.prisma.user.findMany();
@@ -39,15 +39,15 @@ export class UsersService {
       data: [
         {
           userId: user.id,
-          priority: 1,
+          interval: CommonIntervals.WEEKLY.toString(),
         },
         {
           userId: user.id,
-          priority: 2,
+          interval: CommonIntervals.BIWEEKLY.toString(),
         },
         {
           userId: user.id,
-          priority: 3,
+          interval: CommonIntervals.MONTHLY.toString(),
         },
       ],
     });
