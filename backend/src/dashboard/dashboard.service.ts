@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma.service';
 
-interface TargetWithDeadline {
+export interface TargetWithDeadline {
   id: number;
   name: string;
   type: string;
