@@ -74,4 +74,21 @@ Key models in `backend/prisma/schema.prisma`:
 - `npm test` - Run tests
 
 ## Common Considerations
-- Always make sure the UI works in both mobile and desktop.
+
+## UI coding style
+1. Add localizations to all i18n files with appropriate languages
+2. Always use @ngneat/query to query and mutate data
+3. Don't use Angular signals
+
+## General coding style
+1. Do not unnecessarily comment things that are obvious (e.g. `// Fetch timeline data from backend`)
+2. Don't use abbreviations unless they are very common (e.g. "id" is ok, "usr" is not) and do not use one-letter names for e.g. iteration variables (`let u of users`)
+3. Always use Prisma for database access
+4. Try to use functional programming where possible (e.g. use `map`, `filter`, `reduce` instead of `for` loops and such)
+5. Use `type` over `interface` for consistency
+6. Don't write `undefined` in the code but rather pass around `null` where needed (e.g. `const needle = foo.find(...) ?? null`). Always use explicit checks instead of relying on type coercion (e.g. `nullableValue === null` instead of `!nullableValue`).
+7. Always use curly brackets for blocks such as if statements, even for single-line blocks.
+8. Do not use abbreviated variable names, even in loops like `this.presenters.filter((p) => p !== presenter)`
+9. Always make sure the UI works in both mobile and desktop. 
+10. Don't create documentation files
+
