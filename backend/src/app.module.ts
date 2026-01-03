@@ -1,5 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ScheduleModule } from '@nestjs/schedule';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 import { TargetsModule } from './targets/targets.module';
 import { TiersModule } from './tiers/tiers.module';
 import { UsersModule } from './users/users.module';
@@ -25,6 +27,10 @@ import { HealthController } from './health/health.controller';
       envFilePath: ['.env', '.env.secret'],
       load: [commonConfig, authConfig],
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+      exclude: ['/api/(.*)'],
+    }),
   ],
   controllers: [DashboardController, HealthController],
   providers: [
@@ -37,4 +43,4 @@ import { HealthController } from './health/health.controller';
     PrismaService,
   ],
 })
-export class AppModule { }
+export class AppModule {}
