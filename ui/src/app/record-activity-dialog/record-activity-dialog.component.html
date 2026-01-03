@@ -1,0 +1,33 @@
+<h2 mat-dialog-title>{{ 'RECORD_ACTIVITY.TITLE' | translate }}</h2>
+<p class="subtitle">{{ data.targetName }}</p>
+
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'RECORD_ACTIVITY.TYPE' | translate }}</mat-label>
+      <mat-select formControlName="type">
+        @for (type of activityTypes; track type) {
+          <mat-option [value]="type">
+            {{ 'RECORD_ACTIVITY.TYPES.' + type | translate }}
+          </mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'RECORD_ACTIVITY.DATE' | translate }}</mat-label>
+      <input matInput [matDatepicker]="picker" formControlName="timestamp">
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">
+    {{ 'RECORD_ACTIVITY.CANCEL' | translate }}
+  </button>
+  <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="!form.valid">
+    {{ 'RECORD_ACTIVITY.SAVE' | translate }}
+  </button>
+</mat-dialog-actions>

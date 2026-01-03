@@ -15,13 +15,15 @@
       } @else {
         <div class="cards-grid">
           @for (target of query.data; track target.id) {
-            <mat-card [class.overdue]="target.isOverdue">
+            <mat-card [class.overdue]="target.isOverdue" class="clickable" (click)="openRecordActivityDialog(target)">
               <mat-card-header>
-                <mat-icon mat-card-avatar>{{ getIconForType(target.type) }}</mat-icon>
+                <div mat-card-avatar class="avatar" [style.background-color]="getAvatarColor(target.name)">
+                  {{ getInitials(target.name) }}
+                </div>
                 <mat-card-title>{{ target.name }}</mat-card-title>
                 <mat-card-subtitle>
                   <mat-chip-set>
-                    <mat-chip [highlighted]="target.isOverdue">
+                    <mat-chip [highlighted]="target.isOverdue" [matTooltip]="formatDeadline(target.deadline)">
                       {{ getRelativeDeadline(target) }}
                     </mat-chip>
                   </mat-chip-set>

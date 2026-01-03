@@ -1,21 +1,23 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  Patch,
-  Post,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post } from '@nestjs/common';
 import { TargetsService } from './targets.service';
 import { CreateTargetDto } from './dto/create-target.dto';
 import { UpdateTargetDto } from './dto/update-target.dto';
+import { CreateActivityDto } from './dto/create-activity.dto';
 import { CurrentUser } from '../users/current-user.decorator';
 import { User } from '../users/entities/user.entity';
 
 @Controller('targets')
 export class TargetsController {
   constructor(private readonly targetsService: TargetsService) {}
+
+  @Post(':id/activities')
+  createActivity(
+    @CurrentUser() user: User,
+    @Param('id') id: string,
+    @Body() createActivityDto: CreateActivityDto,
+  ) {
+    return this.targetsService.createActivity(+id, user.id, createActivityDto);
+  }
 
   @Post()
   create(@CurrentUser() user: User, @Body() createTargetDto: CreateTargetDto) {

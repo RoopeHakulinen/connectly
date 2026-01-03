@@ -40,5 +40,17 @@
     "LANGUAGE": {
       "TITLE": "Kieli"
     }
+  },
+  "RECORD_ACTIVITY": {
+    "TITLE": "Kirjaa aktiviteetti",
+    "TYPE": "Aktiviteettityyppi",
+    "DATE": "Päivämäärä",
+    "CANCEL": "Peruuta",
+    "SAVE": "Tallenna",
+    "TYPES": {
+      "CALL": "Puhelu",
+      "MESSAGE": "Viesti",
+      "OTHER": "Muu"
+    }
   }
 }

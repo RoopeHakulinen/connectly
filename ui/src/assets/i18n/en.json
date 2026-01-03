@@ -58,5 +58,17 @@
       "SIMPLE": "Yearly",
       "COMPLEX": "Every {{count}} years"
     }
+  },
+  "RECORD_ACTIVITY": {
+    "TITLE": "Record Activity",
+    "TYPE": "Activity type",
+    "DATE": "Date",
+    "CANCEL": "Cancel",
+    "SAVE": "Save",
+    "TYPES": {
+      "CALL": "Call",
+      "MESSAGE": "Message",
+      "OTHER": "Other"
+    }
   }
 }

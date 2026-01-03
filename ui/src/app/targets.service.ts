@@ -2,8 +2,10 @@ import { inject, Injectable } from '@angular/core';
 import { injectMutation, injectQuery, injectQueryClient } from '@ngneat/query';
 import { HttpClient } from '@angular/common/http';
 import { Tier } from './tiers/tiers.service';
+import { firstValueFrom } from 'rxjs';
 
 export type TargetType = 'FRIEND' | 'TASK';
+export type ActivityType = 'CALL' | 'MESSAGE' | 'OTHER';
 
 export interface Target {
   id: number;
@@ -23,14 +25,26 @@ export interface CreateTargetDto {
 
 export interface UpdateTargetDto extends Partial<CreateTargetDto> {}
 
+export interface Activity {
+  id: number;
+  type: ActivityType;
+  timestamp: string;
+  targetId: number;
+}
+
+export interface CreateActivityRequest {
+  type: ActivityType;
+  timestamp?: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class TargetsService {
   #query = injectQuery();
   #mutation = injectMutation();
-  #http = inject(HttpClient);
   #queryClient = injectQueryClient();
+  #http = inject(HttpClient);
 
   getTargets() {
     return this.#query({
@@ -75,5 +89,14 @@ export class TargetsService {
         this.#queryClient.invalidateQueries({ queryKey: ['dashboard'] });
       },
     });
+  }
+
+  async createActivity(targetId: number, request: CreateActivityRequest): Promise<Activity> {
+    const result = await firstValueFrom(
+      this.#http.post<Activity>(`/api/targets/${targetId}/activities`, request),
+    );
+    this.#queryClient.invalidateQueries({ queryKey: ['dashboard'] });
+    this.#queryClient.invalidateQueries({ queryKey: ['targets'] });
+    return result;
   }
 }
