@@ -8,6 +8,8 @@ import { UsersModule } from './users/users.module';
 import { DashboardController } from './dashboard/dashboard.controller';
 import { DashboardService } from './dashboard/dashboard.service';
 import { NotificationsService } from './notifications/notifications.service';
+import { PushService } from './notifications/push.service';
+import { PushController } from './notifications/push.controller';
 import { PrismaService } from '../prisma.service';
 import { ConfigModule } from '@nestjs/config';
 import { authConfig } from './config/auth.config';
@@ -32,7 +34,7 @@ import { HealthController } from './health/health.controller';
       exclude: ['/api/(.*)'],
     }),
   ],
-  controllers: [DashboardController, HealthController],
+  controllers: [DashboardController, HealthController, PushController],
   providers: [
     {
       provide: APP_GUARD,
@@ -40,6 +42,7 @@ import { HealthController } from './health/health.controller';
     },
     DashboardService,
     NotificationsService,
+    PushService,
     PrismaService,
   ],
 })

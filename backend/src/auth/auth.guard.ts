@@ -12,6 +12,7 @@ export class AuthGuard implements CanActivate {
     '/api/auth/callback',
     '/api/auth/refresh-login',
     '/api/health',
+    '/api/push/vapid-public-key',
   ];
 
   constructor(private readonly configService: ConfigService) { }

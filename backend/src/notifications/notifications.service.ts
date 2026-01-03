@@ -1,15 +1,19 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Cron } from '@nestjs/schedule';
 import { PrismaService } from '../../prisma.service';
+import { PushService } from './push.service';
 
 @Injectable()
 export class NotificationsService {
   private readonly logger = new Logger(NotificationsService.name);
 
-  constructor(private prisma: PrismaService) {
+  constructor(
+    private prisma: PrismaService,
+    private pushService: PushService,
+  ) {
   }
 
-  @Cron('0 10 * * *', { timeZone: 'UTC' })
+  @Cron('* * * * *', { timeZone: 'UTC' })
   async checkUpcomingDeadlines() {
     this.logger.log('Running daily deadline check...');
 
@@ -34,7 +38,6 @@ export class NotificationsService {
         lastActivity,
         target.tier.interval,
       );
-      console.log(deadline.toISOString());
 
       const isWithinThreeDays = deadline > now && deadline <= threeDaysFromNow;
       if (!isWithinThreeDays) {
@@ -69,6 +72,15 @@ export class NotificationsService {
       this.logger.log(
         `- Target: "${target.name}" (ID: ${target.id}, User: ${target.user.email}) | Deadline: ${deadline.toISOString()}`,
       );
+
+      if (target.notificationEnabled) {
+        await this.pushService.sendToUser(target.userId, {
+          title: 'Deadline Approaching',
+          body: `Your target "${target.name}" is due in 3 days!`,
+          url: `/targets/${target.id}`,
+          data: { targetId: target.id, type: 'deadline_reminder' },
+        });
+      }
 
       await this.prisma.target.update({
         where: { id: target.id },

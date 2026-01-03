@@ -1,10 +1,11 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { APP_INITIALIZER, ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
+import { PushNotificationService } from './shared/services/push-notification.service';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-import { provideQueryClient, QueryClient } from '@ngneat/query';
+import { QueryClient } from '@ngneat/query';
 import { provideTranslateService } from '@ngx-translate/core';
 import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 import { provideTanStackQuery } from '@tanstack/angular-query-experimental';
@@ -32,5 +33,14 @@ export const appConfig: ApplicationConfig = {
         suffix: '.json',
       }),
     }),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: (pushService: PushNotificationService) => async () => {
+        await pushService.initialize();
+        await pushService.subscribe();
+      },
+      deps: [PushNotificationService],
+      multi: true,
+    },
   ],
 };
