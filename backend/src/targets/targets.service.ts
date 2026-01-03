@@ -45,6 +45,14 @@ export class TargetsService {
       where: {
         id,
       },
+      include: {
+        tier: true,
+        activities: {
+          orderBy: {
+            timestamp: 'desc',
+          },
+        },
+      },
     });
   }
 

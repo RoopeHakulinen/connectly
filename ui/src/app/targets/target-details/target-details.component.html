@@ -1,0 +1,64 @@
+<div class="page-container">
+  @if (target$ | async; as query) {
+    @if (query.isLoading) {
+      <div class="loading-container">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    } @else if (query.data) {
+      <div class="header">
+        <button mat-icon-button (click)="goBack()">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+        <div class="avatar" [style.background-color]="getAvatarColor(query.data.name)">
+          {{ getInitials(query.data.name) }}
+        </div>
+        <div class="header-content">
+          <h1>{{ query.data.name }}</h1>
+          <p class="subtitle">{{ query.data.tier.interval | recurrence | async }}</p>
+        </div>
+      </div>
+
+      <mat-card class="details-card">
+        <mat-card-header>
+          <mat-card-title>{{ 'TARGET_DETAILS.INFO.TITLE' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="info-row">
+            <span class="label">{{ 'TARGET_DETAILS.INFO.TYPE' | translate }}</span>
+            <mat-chip>{{ query.data.type }}</mat-chip>
+          </div>
+          @if (query.data.notes) {
+            <div class="info-row">
+              <span class="label">{{ 'TARGET_DETAILS.INFO.NOTES' | translate }}</span>
+              <span class="value">{{ query.data.notes }}</span>
+            </div>
+          }
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card class="activities-card">
+        <mat-card-header>
+          <mat-card-title>{{ 'TARGET_DETAILS.ACTIVITIES.TITLE' | translate }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          @if (query.data.activities.length === 0) {
+            <div class="empty-state">
+              <mat-icon>history</mat-icon>
+              <p>{{ 'TARGET_DETAILS.ACTIVITIES.EMPTY' | translate }}</p>
+            </div>
+          } @else {
+            <mat-list>
+              @for (activity of query.data.activities; track activity.id) {
+                <mat-list-item>
+                  <mat-icon matListItemIcon>{{ getActivityIcon(activity.type) }}</mat-icon>
+                  <span matListItemTitle>{{ 'RECORD_ACTIVITY.TYPES.' + activity.type | translate }}</span>
+                  <span matListItemLine>{{ activity.timestamp | date:'medium' }}</span>
+                </mat-list-item>
+              }
+            </mat-list>
+          }
+        </mat-card-content>
+      </mat-card>
+    }
+  }
+</div>

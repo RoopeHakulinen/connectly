@@ -42,6 +42,7 @@
         }
       </mat-card-content>
       <mat-card-actions align="end">
+        <button mat-button [routerLink]="['/app/targets', target.id]">View</button>
         <button mat-button (click)="openDialog(target)">Edit</button>
         <button mat-button color="warn" (click)="delete(target)">
           Delete

@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -16,6 +17,7 @@ import { ConfirmDialogComponent } from '../shared/components/confirm-dialog/conf
   standalone: true,
   imports: [
     AsyncPipe,
+    RouterLink,
     MatCardModule,
     MatIconModule,
     MatButtonModule,

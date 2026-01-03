@@ -59,6 +59,10 @@ export class DashboardComponent {
   }
 
   getRelativeDeadline(target: UpcomingTarget): string {
+    if (!target.lastActivity) {
+      return this.translate.instant('DASHBOARD.DEADLINE.CONTACT_NOW');
+    }
+
     const deadline = new Date(target.deadline);
     const now = new Date();
     const diffMs = deadline.getTime() - now.getTime();

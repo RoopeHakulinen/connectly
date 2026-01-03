@@ -31,7 +31,8 @@
       "WEEK": "Viikon päästä",
       "WEEKS": "{{count}} viikon päästä",
       "OVERDUE_DAY": "1 päivä myöhässä",
-      "OVERDUE_DAYS": "{{count}} päivää myöhässä"
+      "OVERDUE_DAYS": "{{count}} päivää myöhässä",
+      "CONTACT_NOW": "Ota yhteyttä nyt"
     }
   },
   "PROFILE": {
@@ -39,6 +40,24 @@
     "DESCRIPTION": "Hallitse tilisi asetuksia täällä.",
     "LANGUAGE": {
       "TITLE": "Kieli"
+    }
+  },
+  "RECURRENCE": {
+    "DAILY": {
+      "SIMPLE": "Päivittäin",
+      "COMPLEX": "Joka {{count}}. päivä"
+    },
+    "WEEKLY": {
+      "SIMPLE": "Viikoittain",
+      "COMPLEX": "Joka {{count}}. viikko"
+    },
+    "MONTHLY": {
+      "SIMPLE": "Kuukausittain",
+      "COMPLEX": "Joka {{count}}. kuukausi"
+    },
+    "YEARLY": {
+      "SIMPLE": "Vuosittain",
+      "COMPLEX": "Joka {{count}}. vuosi"
     }
   },
   "RECORD_ACTIVITY": {
@@ -51,6 +70,17 @@
       "CALL": "Puhelu",
       "MESSAGE": "Viesti",
       "OTHER": "Muu"
+    }
+  },
+  "TARGET_DETAILS": {
+    "INFO": {
+      "TITLE": "Tiedot",
+      "TYPE": "Tyyppi",
+      "NOTES": "Muistiinpanot"
+    },
+    "ACTIVITIES": {
+      "TITLE": "Aktiviteettihistoria",
+      "EMPTY": "Ei vielä kirjattuja aktiviteetteja"
     }
   }
 }

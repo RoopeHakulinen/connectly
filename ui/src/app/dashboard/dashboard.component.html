@@ -23,7 +23,8 @@
                 <mat-card-title>{{ target.name }}</mat-card-title>
                 <mat-card-subtitle>
                   <mat-chip-set>
-                    <mat-chip [highlighted]="target.isOverdue" [matTooltip]="formatDeadline(target.deadline)">
+                    <mat-chip [highlighted]="target.isOverdue"
+                              [matTooltip]="target.lastActivity ? formatDeadline(target.deadline) : ''">
                       {{ getRelativeDeadline(target) }}
                     </mat-chip>
                   </mat-chip-set>

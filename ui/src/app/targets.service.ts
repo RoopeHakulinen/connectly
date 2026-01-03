@@ -55,6 +55,15 @@ export class TargetsService {
     }).result$;
   }
 
+  getTarget(id: number) {
+    return this.#query({
+      queryKey: ['targets', id] as const,
+      queryFn: () => {
+        return this.#http.get<Target>(`/api/targets/${id}`);
+      },
+    }).result$;
+  }
+
   createTarget() {
     return this.#mutation({
       mutationFn: (dto: CreateTargetDto) => {

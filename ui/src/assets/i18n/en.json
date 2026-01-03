@@ -31,7 +31,8 @@
       "WEEK": "Due in 1 week",
       "WEEKS": "Due in {{count}} weeks",
       "OVERDUE_DAY": "1 day overdue",
-      "OVERDUE_DAYS": "{{count}} days overdue"
+      "OVERDUE_DAYS": "{{count}} days overdue",
+      "CONTACT_NOW": "Contact now"
     }
   },
   "PROFILE": {
@@ -69,6 +70,17 @@
       "CALL": "Call",
       "MESSAGE": "Message",
       "OTHER": "Other"
+    }
+  },
+  "TARGET_DETAILS": {
+    "INFO": {
+      "TITLE": "Details",
+      "TYPE": "Type",
+      "NOTES": "Notes"
+    },
+    "ACTIVITIES": {
+      "TITLE": "Activity History",
+      "EMPTY": "No activities recorded yet"
     }
   }
 }
