@@ -44,9 +44,22 @@ resource "aws_ecs_task_definition" "app" {
           "name"      = "GOOGLE_CLIENT_SECRET",
           "valueFrom" = aws_secretsmanager_secret.client_secret.arn
         }
-      ]
+      ],
+      logConfiguration = {
+        logDriver = "awslogs"
+        options = {
+          "awslogs-group"         = "/ecs/connectly-app-${var.environment}"
+          "awslogs-region"        = "eu-west-1"
+          "awslogs-stream-prefix" = "ecs"
+        }
+      }
     }
   ])
+}
+
+resource "aws_cloudwatch_log_group" "app_logs" {
+  name              = "/ecs/connectly-app-${var.environment}"
+  retention_in_days = 30
 }
 
 resource "aws_ecs_service" "app" {
