@@ -1,4 +1,10 @@
 {
+  "NAV": {
+    "DASHBOARD": "Dashboard",
+    "TARGETS": "Targets",
+    "TIERS": "Tiers",
+    "PROFILE": "Profile"
+  },
   "LOGIN": {
     "TAGLINE": "Stay connected with the people who matter most",
     "FEATURES": {

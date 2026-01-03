@@ -1,4 +1,10 @@
 {
+  "NAV": {
+    "DASHBOARD": "Etusivu",
+    "TARGETS": "Kohteet",
+    "TIERS": "Tasot",
+    "PROFILE": "Profiili"
+  },
   "LOGIN": {
     "TAGLINE": "Pysy yhteydessä tärkeimpiin ihmisiin",
     "FEATURES": {

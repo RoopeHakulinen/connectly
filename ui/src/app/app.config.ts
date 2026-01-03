@@ -9,9 +9,9 @@ import { provideTranslateHttpLoader } from '@ngx-translate/http-loader';
 
 function getStoredLanguage(): string {
   if (typeof window !== 'undefined' && window.localStorage) {
-    return localStorage.getItem('selectedLanguage') || 'fi';
+    return localStorage.getItem('selectedLanguage') || 'en';
   }
-  return 'fi';
+  return 'en';
 }
 
 export const appConfig: ApplicationConfig = {
@@ -23,7 +23,7 @@ export const appConfig: ApplicationConfig = {
     provideTranslateService({
       defaultLanguage: getStoredLanguage(),
       useDefaultLang: true,
-      fallbackLang: 'fi',
+      fallbackLang: 'en',
       loader: provideTranslateHttpLoader({ prefix: './assets/i18n/', suffix: '.json' }),
     }),
   ],
