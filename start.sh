@@ -9,4 +9,9 @@ npx prisma migrate deploy
 
 # Start the application
 echo "Starting NestJS application..."
-exec node dist/src/main.js
+echo "Current Directory: $(pwd)"
+echo "Listing /home/node/dist:"
+ls -la /home/node/dist
+echo "Finding index.html..."
+find /home/node -name "index.html"
+exec node dist/main.js
