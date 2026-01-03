@@ -124,6 +124,18 @@
   },
   "TIERS": {
     "TITLE": "Tasot",
-    "DESCRIPTION": "Määritä yhteydenpitotiheystasosi täällä."
+    "DESCRIPTION": "Määritä yhteydenpitotiheystasosi täällä.",
+    "NEW": "Uusi taso",
+    "EMPTY": "Ei tasoja. Luo ensimmäinen aloittaaksesi!",
+    "DELETE": {
+      "TITLE": "Poista taso",
+      "MESSAGE": "Haluatko varmasti poistaa tämän tason? Tätä tasoa käyttävät kohteet täytyy määrittää uudelleen."
+    }
+  },
+  "TIER_DIALOG": {
+    "TITLE_NEW": "Uusi taso",
+    "TITLE_EDIT": "Muokkaa tasoa",
+    "FREQUENCY": "Tiheys",
+    "INTERVAL": "Väli"
   }
 }

@@ -1,4 +1,44 @@
 <div class="page-container">
-  <h1>{{ 'TIERS.TITLE' | translate }}</h1>
-  <p>{{ 'TIERS.DESCRIPTION' | translate }}</p>
+  <div class="header">
+    <div>
+      <h1>{{ 'TIERS.TITLE' | translate }}</h1>
+      <p class="subtitle">{{ 'TIERS.DESCRIPTION' | translate }}</p>
+    </div>
+    <button mat-flat-button color="primary" (click)="openDialog()">
+      <mat-icon>add</mat-icon>
+      {{ 'TIERS.NEW' | translate }}
+    </button>
+  </div>
+
+  @if (tiers$ | async; as query) {
+    @if (query.isLoading) {
+      <div class="loading-container">
+        <mat-spinner diameter="40"></mat-spinner>
+      </div>
+    } @else if (query.data) {
+      @if (query.data.length === 0) {
+        <div class="empty-state">
+          <mat-icon>layers</mat-icon>
+          <p>{{ 'TIERS.EMPTY' | translate }}</p>
+        </div>
+      } @else {
+        <div class="cards-grid">
+          @for (tier of query.data; track tier.id) {
+            <mat-card>
+              <mat-card-header>
+                <mat-icon mat-card-avatar>schedule</mat-icon>
+                <mat-card-title>{{ tier.interval | recurrence | async }}</mat-card-title>
+              </mat-card-header>
+              <mat-card-actions align="end">
+                <button mat-button (click)="openDialog(tier)">{{ 'COMMON.EDIT' | translate }}</button>
+                <button mat-button color="warn" (click)="delete(tier)">
+                  {{ 'COMMON.DELETE' | translate }}
+                </button>
+              </mat-card-actions>
+            </mat-card>
+          }
+        </div>
+      }
+    }
+  }
 </div>

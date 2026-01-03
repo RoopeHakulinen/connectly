@@ -125,6 +125,18 @@
   },
   "TIERS": {
     "TITLE": "Tiers",
-    "DESCRIPTION": "Configure your contact frequency tiers here."
+    "DESCRIPTION": "Configure your contact frequency tiers here.",
+    "NEW": "New Tier",
+    "EMPTY": "No tiers found. Create one to get started!",
+    "DELETE": {
+      "TITLE": "Delete Tier",
+      "MESSAGE": "Are you sure you want to delete this tier? Targets using this tier will need to be reassigned."
+    }
+  },
+  "TIER_DIALOG": {
+    "TITLE_NEW": "New Tier",
+    "TITLE_EDIT": "Edit Tier",
+    "FREQUENCY": "Frequency",
+    "INTERVAL": "Interval"
   }
 }

@@ -1,0 +1,24 @@
+<h2 mat-dialog-title>{{ (isEditMode ? 'TIER_DIALOG.TITLE_EDIT' : 'TIER_DIALOG.TITLE_NEW') | translate }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form" class="tier-form">
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'TIER_DIALOG.FREQUENCY' | translate }}</mat-label>
+      <mat-select formControlName="frequency">
+        @for (freq of frequencies; track freq) {
+          <mat-option [value]="freq">{{ 'RECURRENCE.' + freq + '.SIMPLE' | translate }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>{{ 'TIER_DIALOG.INTERVAL' | translate }}</mat-label>
+      <input matInput type="number" formControlName="interval" min="1" />
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>{{ 'COMMON.CANCEL' | translate }}</button>
+  <button mat-raised-button color="primary" (click)="save()" [disabled]="form.invalid">
+    {{ 'COMMON.SAVE' | translate }}
+  </button>
+</mat-dialog-actions>
