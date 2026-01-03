@@ -11,9 +11,10 @@ export class AuthGuard implements CanActivate {
     '/api/auth/redirect',
     '/api/auth/callback',
     '/api/auth/refresh-login',
+    '/api/health',
   ];
 
-  constructor(private readonly configService: ConfigService) {}
+  constructor(private readonly configService: ConfigService) { }
 
   canActivate(
     context: ExecutionContext,

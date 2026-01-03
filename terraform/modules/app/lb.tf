@@ -16,6 +16,15 @@ resource "aws_lb_target_group" "connectly" {
   lifecycle {
     create_before_destroy = true
   }
+
+  health_check {
+    path                = "/api/health"
+    healthy_threshold   = 2
+    unhealthy_threshold = 10
+    timeout             = 5
+    interval            = 30
+    matcher             = "200"
+  }
 }
 
 resource "aws_lb_listener" "connectly" {

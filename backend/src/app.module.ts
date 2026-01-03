@@ -11,6 +11,8 @@ import { commonConfig } from './config/common.config';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './auth/auth.guard';
 
+import { HealthController } from './health/health.controller';
+
 @Module({
   imports: [
     TargetsModule,
@@ -21,7 +23,7 @@ import { AuthGuard } from './auth/auth.guard';
       load: [commonConfig, authConfig],
     }),
   ],
-  controllers: [DashboardController],
+  controllers: [DashboardController, HealthController],
   providers: [
     {
       provide: APP_GUARD,
@@ -31,4 +33,4 @@ import { AuthGuard } from './auth/auth.guard';
     PrismaService,
   ],
 })
-export class AppModule {}
+export class AppModule { }
