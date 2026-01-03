@@ -1,5 +1,6 @@
 .sidenav-container {
   height: 100vh;
+  height: 100dvh;
   background: transparent;
 }
 
@@ -47,6 +48,9 @@
   color: var(--toolbar-text);
   box-shadow: var(--shadow-md);
   z-index: 2;
+  padding-top: env(safe-area-inset-top);
+  height: auto;
+  min-height: 64px;
 
   span {
     font-weight: 500;
@@ -66,6 +70,7 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
+  height: 100dvh;
 }
 
 .mobile-content {
@@ -79,7 +84,7 @@
   justify-content: space-around;
   background-color: var(--bg-primary);
   border-top: 1px solid var(--border-color);
-  padding: 8px 0;
+  padding: 8px 0 calc(8px + env(safe-area-inset-bottom));
 
   .nav-item {
     display: flex;
