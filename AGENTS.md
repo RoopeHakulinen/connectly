@@ -72,3 +72,6 @@ Key models in `backend/prisma/schema.prisma`:
 - `npm start` - Start development server
 - `npm run build` - Build for production
 - `npm test` - Run tests
+
+## Common Considerations
+- Always make sure the UI works in both mobile and desktop.
