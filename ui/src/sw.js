@@ -25,7 +25,7 @@ self.addEventListener('push', (event) => {
     body: payload.body,
     icon: payload.icon || '/assets/icons/icon-192x192.png',
     badge: '/assets/icons/badge-72x72.png',
-    data: payload.data || {},
+    data: { ...payload.data, url: payload.url },
     vibrate: [100, 50, 100],
     actions: [
       { action: 'open', title: 'Open' },
@@ -33,11 +33,13 @@ self.addEventListener('push', (event) => {
     ],
   };
 
-  if (payload.url) {
-    options.data.url = payload.url;
-  }
+  console.log('Showing notification with options:', options);
 
-  event.waitUntil(self.registration.showNotification(payload.title, options));
+  event.waitUntil(
+    self.registration.showNotification(payload.title, options)
+      .then(() => console.log('Notification shown successfully'))
+      .catch(err => console.error('Error showing notification:', err))
+  );
 });
 
 self.addEventListener('notificationclick', (event) => {
