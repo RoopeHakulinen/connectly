@@ -1,4 +1,4 @@
-FROM node:22-alpine3.20 as ui
+FROM node:22-alpine3.20 AS ui
 
 ENV SKIP_PUPPETEER_BROWSER_DOWNLOAD true
 ENV NODE_ENV build
@@ -12,7 +12,7 @@ WORKDIR /home/node/ui
 RUN npm ci && npm run build
 
 
-FROM node:22-alpine3.20 as backend
+FROM node:22-alpine3.20 AS backend
 
 ENV NODE_ENV build
 
