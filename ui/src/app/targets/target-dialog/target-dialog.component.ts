@@ -1,6 +1,10 @@
 import { Component, Inject, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import {
+  MAT_DIALOG_DATA,
+  MatDialogModule,
+  MatDialogRef,
+} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
@@ -44,7 +48,7 @@ export class TargetDialogComponent {
     type: ['FRIEND' as TargetType, Validators.required],
     tierId: [null as number | null, Validators.required],
     notes: [''],
-    notificationEnabled: [false],
+    notificationEnabled: [true],
   });
 
   isEditMode = false;
