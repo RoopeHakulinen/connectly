@@ -11,25 +11,8 @@
   <meta name="apple-mobile-web-app-title" content="Connectly">
   <meta name="theme-color" content="#667eea">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="apple-touch-icon" href="favicon.png">
   <link rel="manifest" href="manifest.json">
-  <script>
-    // Prevent internal links from opening in Safari on iOS PWAs
-    (function (document, navigator, standalone) {
-      if ((standalone in navigator) && navigator[standalone]) {
-        var cnode, remNodes = false;
-        document.addEventListener('click', function (e) {
-          cnode = e.target;
-          while (cnode.tagName !== 'A' && cnode.tagName !== 'HTML') {
-            cnode = cnode.parentNode;
-          }
-          if ('href' in cnode && cnode.href.indexOf('http') !== -1 && (cnode.href.indexOf(document.location.host) !== -1 || remNodes)) {
-            e.preventDefault();
-            window.location.href = cnode.href;
-          }
-        }, false);
-      }
-    })(document, window.navigator, 'standalone');
-  </script>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
