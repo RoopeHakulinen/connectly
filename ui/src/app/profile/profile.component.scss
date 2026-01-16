@@ -28,4 +28,38 @@
       width: 18px;
     }
   }
+
+  .notification-settings {
+    .setting-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      .setting-info {
+        flex: 1;
+
+        .setting-description {
+          margin: 0;
+          color: var(--text-secondary);
+          font-size: 0.9rem;
+        }
+
+        .warning-text {
+          margin: 8px 0 0 0;
+          color: #f44336;
+          font-size: 0.85rem;
+          display: flex;
+          align-items: center;
+          gap: 4px;
+
+          mat-icon {
+            font-size: 16px;
+            height: 16px;
+            width: 16px;
+          }
+        }
+      }
+    }
+  }
 }

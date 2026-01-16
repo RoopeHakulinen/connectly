@@ -37,7 +37,6 @@ export const appConfig: ApplicationConfig = {
       provide: APP_INITIALIZER,
       useFactory: (pushService: PushNotificationService) => async () => {
         await pushService.initialize();
-        await pushService.subscribe();
       },
       deps: [PushNotificationService],
       multi: true,

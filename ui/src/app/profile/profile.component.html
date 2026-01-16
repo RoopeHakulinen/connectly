@@ -35,4 +35,23 @@
       </mat-button-toggle-group>
     </mat-card-content>
   </mat-card>
+
+  <mat-card class="settings-card">
+    <mat-card-header>
+      <mat-card-title>{{ 'PROFILE.NOTIFICATIONS.TITLE' | translate }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="notification-settings">
+      <div class="setting-row">
+        <div class="setting-info">
+          <p class="setting-description">{{ 'PROFILE.NOTIFICATIONS.DESCRIPTION' | translate }}</p>
+          <p *ngIf="permissionStatus === 'denied'" class="warning-text">
+            <mat-icon>warning</mat-icon> {{ 'PROFILE.NOTIFICATIONS.BLOCKED' | translate }}
+          </p>
+        </div>
+        <mat-slide-toggle [checked]="isSubscribed" (change)="toggleNotifications($event.checked)">
+          {{ (isSubscribed ? 'PROFILE.NOTIFICATIONS.ENABLED' : 'PROFILE.NOTIFICATIONS.DISABLED') | translate }}
+        </mat-slide-toggle>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>

@@ -54,6 +54,13 @@
       "SYSTEM": "Järjestelmä",
       "LIGHT": "Vaalea",
       "DARK": "Tumma"
+    },
+    "NOTIFICATIONS": {
+      "TITLE": "Push-ilmoitukset",
+      "DESCRIPTION": "Vastaanota ilmoituksia tällä laitteella, kun takarajat lähestyvät.",
+      "ENABLED": "Päällä",
+      "DISABLED": "Pois päältä",
+      "BLOCKED": "Ilmoitukset on estetty selaimen asetuksissa. Ota ne käyttöön saadaksesi ilmoituksia."
     }
   },
   "RECURRENCE": {
