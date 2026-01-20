@@ -13,3 +13,11 @@ variable "client_secret" {
 variable "app_image" {
   type = string
 }
+
+variable "vapid_public_key" {
+  type = string
+}
+
+variable "vapid_private_key" {
+  type = string
+}

@@ -47,6 +47,14 @@ resource "aws_ecs_task_definition" "app" {
         {
           "name"      = "GOOGLE_CLIENT_SECRET",
           "valueFrom" = aws_secretsmanager_secret.client_secret.arn
+        },
+        {
+          "name"      = "VAPID_PUBLIC_KEY",
+          "valueFrom" = aws_secretsmanager_secret.vapid_public_key.arn
+        },
+        {
+          "name"      = "VAPID_PRIVATE_KEY",
+          "valueFrom" = aws_secretsmanager_secret.vapid_private_key.arn
         }
       ],
       logConfiguration = {
@@ -112,6 +120,24 @@ resource "aws_secretsmanager_secret" "client_secret" {
 resource "aws_secretsmanager_secret_version" "client_secret" {
   secret_id     = aws_secretsmanager_secret.client_secret.id
   secret_string = var.client_secret
+}
+
+resource "aws_secretsmanager_secret" "vapid_public_key" {
+  name = "${var.environment}-vapid-public-key"
+}
+
+resource "aws_secretsmanager_secret_version" "vapid_public_key" {
+  secret_id     = aws_secretsmanager_secret.vapid_public_key.id
+  secret_string = var.vapid_public_key
+}
+
+resource "aws_secretsmanager_secret" "vapid_private_key" {
+  name = "${var.environment}-vapid-private-key"
+}
+
+resource "aws_secretsmanager_secret_version" "vapid_private_key" {
+  secret_id     = aws_secretsmanager_secret.vapid_private_key.id
+  secret_string = var.vapid_private_key
 }
 
 

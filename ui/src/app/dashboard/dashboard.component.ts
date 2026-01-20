@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { AsyncPipe, DatePipe } from '@angular/common';
+import { AsyncPipe, DatePipe, NgClass } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatChipsModule } from '@angular/material/chips';
@@ -20,6 +20,7 @@ import { TargetsService } from '../targets.service';
   imports: [
     AsyncPipe,
     DatePipe,
+    NgClass,
     MatCardModule,
     MatIconModule,
     MatChipsModule,
@@ -80,6 +81,23 @@ export class DashboardComponent {
     if (diffDays < 7) return this.translate.instant('DASHBOARD.DEADLINE.DAYS', { count: diffDays });
     if (diffDays < 14) return this.translate.instant('DASHBOARD.DEADLINE.WEEK');
     return this.translate.instant('DASHBOARD.DEADLINE.WEEKS', { count: Math.floor(diffDays / 7) });
+  }
+
+  getDeadlineStatusClass(target: UpcomingTarget): string {
+    if (target.isOverdue) return 'status-overdue';
+
+    if (!target.deadline) return '';
+
+    const deadline = new Date(target.deadline);
+    const now = new Date();
+    const diffMs = deadline.getTime() - now.getTime();
+    const diffDays = diffMs / (1000 * 60 * 60 * 24);
+
+    if (diffDays <= 3) {
+      return 'status-warning';
+    } else {
+      return 'status-ok';
+    }
   }
 
   formatDeadline(deadline: string): string {

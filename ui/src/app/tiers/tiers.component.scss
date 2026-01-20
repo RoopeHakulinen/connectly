@@ -70,4 +70,11 @@ mat-card {
   .cards-grid {
     grid-template-columns: 1fr;
   }
+
+  .header {
+    button {
+      transform: scale(0.9);
+      transform-origin: right center;
+    }
+  }
 }

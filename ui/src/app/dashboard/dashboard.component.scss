@@ -43,13 +43,21 @@ mat-card {
     box-shadow: var(--shadow-lg);
   }
 
-  &.overdue {
+  &.status-overdue {
     border-left: 4px solid var(--overdue-border);
 
     mat-chip {
       background-color: var(--overdue-bg);
       color: var(--overdue-text);
     }
+  }
+
+  &.status-warning {
+    border-left: 4px solid var(--color-warning);
+  }
+
+  &.status-ok {
+    border-left: 4px solid var(--color-success);
   }
 
   mat-card-header {

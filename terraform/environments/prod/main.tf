@@ -13,4 +13,6 @@ module "app" {
   environment   = var.environment
   client_id     = var.client_id
   client_secret = var.client_secret
+  vapid_public_key  = var.vapid_public_key
+  vapid_private_key = var.vapid_private_key
 }

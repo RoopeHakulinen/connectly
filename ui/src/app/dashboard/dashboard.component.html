@@ -15,7 +15,7 @@
   } @else {
   <div class="cards-grid">
     @for (target of query.data; track target.id) {
-    <mat-card [class.overdue]="target.isOverdue" class="clickable" (click)="openRecordActivityDialog(target)">
+    <mat-card [ngClass]="getDeadlineStatusClass(target)" class="clickable" (click)="openRecordActivityDialog(target)">
       <mat-card-header>
         <div mat-card-avatar class="avatar" [style.background-color]="getAvatarColor(target.name)">
           {{ getInitials(target.name) }}
